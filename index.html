@@ -2,117 +2,130 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Алмастрой Анапа</title>
   <style>
     body {
-      margin: 0;
+      background: #000;
+      color: #fff;
       font-family: Arial, sans-serif;
-      background: #000000;
-      color: #ffffff;
+      margin: 0;
+      padding: 0 20px;
     }
-    header img {
-      width: 100%;
-      display: block;
-    }
-    main {
-      padding: 20px;
-      max-width: 1200px;
-      margin: auto;
-    }
-    h2 {
-      margin-top: 40px;
-    }
-    .buttons a {
-      display: inline-block;
-      margin: 10px 10px 0 0;
-      padding: 10px 20px;
-      border-radius: 5px;
-      text-decoration: none;
+
+    header {
+      padding: 30px 0;
+      text-align: center;
+      font-size: 28px;
       font-weight: bold;
     }
-    .green { background: #28a745; color: white; }
-    .blue { background: #007bff; color: white; }
-    .telegram { background: #0088cc; color: white; }
-    .consult {
-      color: magenta;
-      cursor: pointer;
-      display: inline-block;
-      margin-top: 10px;
+
+    section {
+      margin-bottom: 40px;
     }
+
+    h2 {
+      margin-bottom: 10px;
+    }
+
+    .btn-group {
+      display: flex;
+      gap: 10px;
+      margin: 20px 0;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      font-weight: bold;
+      text-decoration: none;
+      color: #fff;
+      display: inline-block;
+    }
+
+    .call { background: #2ecc71; }
+    .vk { background: #297fb8; }
+    .tg { background: #0088cc; }
+    .consult {
+      background: orange;
+      color: #000;
+      margin-top: 10px;
+      display: inline-block;
+      padding: 10px 15px;
+    }
+
     .portfolio-images {
       display: flex;
-      justify-content: space-around;
       flex-wrap: wrap;
       gap: 20px;
-      margin-top: 20px;
+      justify-content: center;
     }
+
     .portfolio-images img {
-      width: 100%;
-      max-width: 400px;
+      max-width: 300px;
       border-radius: 12px;
+    }
+
+    .pdf-section {
+      margin-top: 40px;
+    }
+
+    .pdf-section a {
+      color: #00ffff;
+      text-decoration: none;
+    }
+
+    .pdf-section a:hover {
+      text-decoration: underline;
     }
   </style>
 </head>
 <body>
 
-<header>
-  <img src="header.png" alt="Алмастрой Анапа - Шапка">
-</header>
+  <header>Алмастрой Анапа</header>
 
-<main>
-  <h2>Связаться с нами</h2>
-  <div class="buttons">
-    <a href="tel:+79280000000" class="green">Позвонить</a>
-    <a href="https://vk.com/" class="blue" target="_blank">ВКонтакте</a>
-    <a href="https://t.me/Chat_alma_bot" class="telegram" target="_blank">Telegram</a>
-  </div>
-  <a href="#" class="consult" onclick="document.getElementById('tg-modal').style.display='flex'">Заказать консультацию</a>
+  <section>
+    <h2>О нас</h2>
+    <p>Мы — команда профессионалов из компании «Алмастрой», работаем в Анапе и Анапском районе. Наша сильная сторона — стильные, современные дома в направлениях хай-тек и минимализм. Строим качественно, надёжно и в срок.</p>
+  </section>
 
-  <h2>Портфолио</h2>
-  <div class="portfolio-images">
-    <img src="1.png" alt="Проект 1">
-    <img src="2.png" alt="Проект 2">
-    <img src="3.png" alt="Проект 3">
-  </div>
+  <section>
+    <h2>Услуги</h2>
+    <ul>
+      <li>Проектирование и строительство домов под ключ</li>
+      <li>Фундаменты, коробки, фасады, кровля</li>
+      <li>Инженерные сети и внутренняя отделка</li>
+      <li>Благоустройство и ландшафтные работы</li>
+    </ul>
+  </section>
 
-  <h2>Уникальное предложение — строительство дома</h2>
-  <p>Компания «Алмастрой» предлагает готовый проект современного дома в Анапе. Стильный фасад, продуманная планировка и минимальные сроки строительства.</p>
-  <p><strong>Скачайте PDF с планировками и сметой:</strong></p>
-  <a href="Almastroi_Proekt_Doma_Pod_Klyuch_2025.pdf" download style="font-size: 18px; color: #00ffff; text-decoration: underline;">
-    📥 Скачать проект дома (PDF)
-  </a>
+  <section>
+    <h2>Портфолио</h2>
+    <div class="portfolio-images">
+      <img src="1.png" alt="Пример дома 1" />
+      <img src="2.png" alt="Пример дома 2" />
+      <img src="3.png" alt="Пример дома 3" />
+    </div>
+  </section>
 
-  <h2>О нас</h2>
-  <p>Мы — команда профессионалов из компании «Алмастрой», работаем в Анапе и Анапском районе. Наша сильная сторона — стильные, современные дома в направлениях хай-тек и минимализм. Строим качественно, надёжно и в срок.</p>
+  <section class="pdf-section">
+    <h2>Уникальное предложение — строительство дома</h2>
+    <p>Компания «Алмастрой» предлагает готовый проект современного дома в Анапе. Стильный фасад, продуманная планировка и минимальные сроки строительства.</p>
+    <p><strong>Скачайте PDF с планировками и сметой:</strong></p>
+    <p>📄 <a href="Plan.pdf" download>Скачать проект дома (PDF)</a></p>
+  </section>
 
-  <h2>Услуги</h2>
-  <ul>
-    <li>Проектирование и строительство домов под ключ</li>
-    <li>Фундаменты, коробки, фасады, кровля</li>
-    <li>Инженерные сети и внутренняя отделка</li>
-    <li>Благоустройство и ландшафтные работы</li>
-  </ul>
-</main>
-
-<!-- Модалка -->
-<div id="tg-modal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.7); justify-content:center; align-items:center;">
-  <div class="window" style="background:#fff; color:#000; padding:20px; border-radius:10px; max-width:400px;">
-    <button class="close" style="float:right;" onclick="document.getElementById('tg-modal').style.display='none'">&times;</button>
-    <h3>Оставьте заявку</h3>
-    <form action="https://api.telegram.org/botYOUR_TOKEN/sendMessage" method="POST">
-      <input type="text" name="name" placeholder="Имя" required><br><br>
-      <input type="tel" name="phone" placeholder="Телефон" required><br><br>
-      <input type="submit" value="Отправить">
-    </form>
-  </div>
-</div>
-<section>
-  <h2>Уникальное предложение — строительство дома</h2>
-  <p>Компания «Алмастрой» предлагает готовый проект современного дома в Анапе. Стильный фасад, продуманная планировка и минимальные сроки строительства.</p>
-  <p><strong>Скачайте PDF с планировками и сметой:</strong></p>
-  <p><a href="Almastroi_Proekt_Doma_Pod_Klyuch_2025.pdf" target="_blank">📄 Скачать проект дома (PDF)</a></p>
-</section>
+  <section>
+    <h2>Связаться с нами</h2>
+    <div class="btn-group">
+      <a href="tel:+79881234567" class="btn call">Позвонить</a>
+      <a href="https://vk.com" target="_blank" class="btn vk">ВКонтакте</a>
+      <a href="https://t.me/Chat_Alma_bot" target="_blank" class="btn tg">Telegram</a>
+    </div>
+    <a href="#" class="consult">Заказать консультацию</a>
+  </section>
 
 </body>
 </html>
