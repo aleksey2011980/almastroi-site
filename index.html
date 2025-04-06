@@ -7,22 +7,24 @@
   <style>
     body {
       margin: 0;
-      background-color: #000;
-      color: white;
       font-family: Arial, sans-serif;
+      background-color: #000;
+      color: #fff;
     }
     header {
-      background: url('Без имени-1.jpg') no-repeat center center/cover;
-      height: 100vh;
+      background-image: url('Без имени-1.jpg');
+      background-size: cover;
+      background-position: center;
+      height: 400px;
       display: flex;
       justify-content: center;
       align-items: center;
       text-align: center;
     }
     header h1 {
-      font-size: 3rem;
+      font-size: 3em;
       background-color: rgba(0,0,0,0.5);
-      padding: 20px;
+      padding: 10px 20px;
       border-radius: 10px;
     }
     section {
@@ -31,44 +33,46 @@
       margin: auto;
     }
     h2 {
-      color: white;
+      margin-bottom: 10px;
     }
-    .portfolio {
-      display: flex;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 20px;
+    ul {
+      padding-left: 20px;
     }
     .portfolio img {
-      width: 32%;
+      width: 100%;
+      max-width: 800px;
       border-radius: 12px;
+      margin-bottom: 20px;
     }
-    .cta {
-      background-color: #111;
-      padding: 30px;
-      border-radius: 10px;
-    }
-    .cta a {
-      display: inline-block;
-      margin-top: 15px;
-      padding: 12px 20px;
-      background-color: #00aaff;
-      color: white;
-      text-decoration: none;
-      border-radius: 6px;
+    .buttons {
+      text-align: center;
+      margin-top: 30px;
     }
     .buttons a {
       display: inline-block;
-      margin: 10px 10px 0 0;
-      padding: 10px 15px;
-      color: white;
+      margin: 10px;
+      padding: 10px 20px;
       text-decoration: none;
-      border-radius: 6px;
+      border-radius: 8px;
+      color: white;
+      font-weight: bold;
     }
-    .green { background-color: #28a745; }
-    .blue { background-color: #007bff; }
+    .call { background-color: green; }
+    .vk { background-color: #3b5998; }
     .telegram { background-color: #0088cc; }
-    .consult { background-color: orange; margin-top: 20px; display: inline-block; padding: 10px 20px; border-radius: 6px; }
+    .consult {
+      display: inline-block;
+      margin-top: 20px;
+      color: #f0f;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    a.pdf-link {
+      color: #00ffff;
+      text-decoration: none;
+      display: inline-block;
+      margin-top: 10px;
+    }
   </style>
 </head>
 <body>
@@ -92,33 +96,29 @@
   </ul>
 </section>
 
-<section>
+<section class="portfolio">
   <h2>Портфолио</h2>
-  <div class="portfolio">
-    <img src="1.png" alt="Проект 1">
-    <img src="2.png" alt="Проект 2">
-    <img src="3.png" alt="Проект 3">
-  </div>
+  <img src="1.png" alt="Проект 1" />
+  <img src="2.png" alt="Проект 2" />
+  <img src="3.png" alt="Проект 3" />
 </section>
 
-<section class="cta">
+<section>
   <h2>Уникальное предложение — строительство дома</h2>
   <p>Компания «Алмастрой» предлагает готовый проект современного дома в Анапе. Стильный фасад, продуманная планировка и минимальные сроки строительства.</p>
   <p><strong>Скачайте PDF с планировками и сметой:</strong></p>
-  <a href="Plan.pdf" download>📄 Скачать проект дома (PDF)</a>
+  <a class="pdf-link" href="plan.pdf" download>📥 Скачать проект дома (PDF)</a>
 </section>
 
-<section>
+<section class="buttons">
   <h2>Связаться с нами</h2>
-  <div class="buttons">
-    <a href="tel:+79180000000" class="green">Позвонить</a>
-    <a href="https://vk.com" class="blue" target="_blank">ВКонтакте</a>
-    <a href="https://t.me" class="telegram" target="_blank">Telegram</a>
-  </div>
-  <br/>
-  <a href="#" class="consult">Заказать консультацию</a>
+  <a href="tel:+79181234567" class="call">Позвонить</a>
+  <a href="https://vk.com" target="_blank" class="vk">ВКонтакте</a>
+  <a href="https://t.me/chat_alma_bot" target="_blank" class="telegram">Telegram</a>
+  <div><a class="consult" onclick="alert('Форма консультации скоро будет')">Заказать консультацию</a></div>
 </section>
 
 </body>
 </html>
+
 
