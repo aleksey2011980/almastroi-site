@@ -1,67 +1,40 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Алмастрой Анапа</title>
   <style>
     body {
       margin: 0;
+      background: black;
+      color: white;
       font-family: Arial, sans-serif;
-      background-color: #000;
-      color: #fff;
     }
+
     header {
-      background-image: url('Без имени-1.jpg');
+      background: url('Без имени-1.jpg') no-repeat center center;
       background-size: cover;
-      background-position: center;
-      height: 250px;
+      height: 100vh;
+      width: 100%;
     }
-    section {
-      padding: 40px 20px;
+
+    main {
       max-width: 1000px;
-      margin: auto;
+      margin: 0 auto;
+      padding: 20px;
     }
+
     h2 {
-      margin-bottom: 10px;
+      margin-top: 40px;
     }
-    ul {
-      padding-left: 20px;
-    }
+
     .portfolio img {
       width: 100%;
       max-width: 800px;
-      border-radius: 12px;
-      margin-bottom: 20px;
-    }
-    .buttons {
-      text-align: center;
-      margin-top: 30px;
-    }
-    .buttons a {
-      display: inline-block;
-      margin: 10px;
-      padding: 10px 20px;
-      text-decoration: none;
-      border-radius: 8px;
-      color: white;
-      font-weight: bold;
-    }
-    .call { background-color: green; }
-    .vk { background-color: #3b5998; }
-    .telegram { background-color: #0088cc; }
-    .consult {
-      display: inline-block;
-      margin-top: 20px;
-      color: #f0f;
-      font-weight: bold;
-      cursor: pointer;
-    }
-    a.pdf-link {
-      color: #00ffff;
-      text-decoration: none;
-      display: inline-block;
-      margin-top: 10px;
+      border-radius: 20px;
+      margin: 20px auto;
+      display: block;
     }
   </style>
 </head>
@@ -69,43 +42,44 @@
 
 <header></header>
 
-<section>
-  <h2>О нас</h2>
-  <p>Мы — команда профессионалов из компании «Алмастрой», работаем в Анапе и Анапском районе. Наша сильная сторона — стильные, современные дома в направлениях хай-тек и минимализм. Строим качественно, надёжно и в срок.</p>
-</section>
+<main>
+  <section id="about">
+    <h2>О нас</h2>
+    <p>Мы — команда профессионалов из компании «Алмастрой», работаем в Анапе и Анапском районе. Наша сильная сторона — стильные, современные дома в направлениях хай-тек и минимализм. Строим качественно, надёжно и в срок.</p>
+  </section>
 
-<section>
-  <h2>Услуги</h2>
-  <ul>
-    <li>Проектирование и строительство домов под ключ</li>
-    <li>Фундаменты, коробки, фасады, кровля</li>
-    <li>Инженерные сети и внутренняя отделка</li>
-    <li>Благоустройство и ландшафтные работы</li>
-  </ul>
-</section>
+  <section id="services">
+    <h2>Услуги</h2>
+    <ul>
+      <li>Проектирование и строительство домов под ключ</li>
+      <li>Фундаменты, коробки, фасады, кровля</li>
+      <li>Инженерные сети и внутренняя отделка</li>
+      <li>Благоустройство и ландшафтные работы</li>
+    </ul>
+  </section>
 
-<section class="portfolio">
-  <h2>Портфолио</h2>
-  <img src="1.png" alt="Проект 1" />
-  <img src="2.png" alt="Проект 2" />
-  <img src="3.png" alt="Проект 3" />
-</section>
+  <section class="portfolio">
+    <h2>Портфолио</h2>
+    <img src="1.png" alt="Проект 1">
+    <img src="2.png" alt="Проект 2">
+    <img src="3.png" alt="Проект 3">
+  </section>
 
-<section>
-  <h2>Уникальное предложение — строительство дома</h2>
-  <p>Компания «Алмастрой» предлагает готовый проект современного дома в Анапе. Стильный фасад, продуманная планировка и минимальные сроки строительства.</p>
-  <p><strong>Скачайте PDF с планировками и сметой:</strong></p>
-  <a class="pdf-link" href="plan.pdf" download>📥 Скачать проект дома (PDF)</a>
-</section>
+  <section>
+    <h2>Уникальное предложение — строительство дома</h2>
+    <p>Компания «Алмастрой» предлагает готовый проект современного дома в Анапе. Стильный фасад, продуманная планировка и минимальные сроки строительства.</p>
+    <p><strong>Скачайте PDF с планировками и сметой:</strong></p>
+    <a href="Plan.pdf" download>📄 Скачать проект дома (PDF)</a>
+  </section>
 
-<section class="buttons">
-  <h2>Связаться с нами</h2>
-  <a href="tel:+79181234567" class="call">Позвонить</a>
-  <a href="https://vk.com" target="_blank" class="vk">ВКонтакте</a>
-  <a href="https://t.me/chat_alma_bot" target="_blank" class="telegram">Telegram</a>
-  <div><a class="consult" onclick="alert('Форма консультации скоро будет')">Заказать консультацию</a></div>
-</section>
+  <section>
+    <h2>Связаться с нами</h2>
+    <a href="tel:+7XXXXXXXXXX">Позвонить</a>
+    <a href="https://vk.com" target="_blank">ВКонтакте</a>
+    <a href="https://t.me/your_bot" target="_blank">Telegram</a>
+  </section>
 
+</main>
 </body>
 </html>
 
