@@ -1,24 +1,23 @@
-
 <!DOCTYPE html>
 <html lang="ru">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Алмастрой Анапа</title>
   <style>
     body {
+      background-color: black;
+      color: white;
+      font-family: sans-serif;
       margin: 0;
-      font-family: Arial, sans-serif;
-      background-color: #000;
-      color: #fff;
+      padding: 0;
     }
     .header {
-      background: url('Без имени-1.jpg') no-repeat center center;
+      background-image: url('Без%20имени-1.jpg');
       background-size: cover;
-      height: 60vh;
-      display: flex;
-      align-items: flex-end;
-      justify-content: center;
+      background-position: center;
+      height: 400px;
+      width: 100%;
     }
     section {
       padding: 40px 20px;
@@ -26,14 +25,14 @@
       margin: auto;
     }
     h2 {
-      color: #fff;
+      font-size: 24px;
+      margin-bottom: 20px;
     }
     .portfolio img {
       width: 100%;
       max-width: 1000px;
       border-radius: 12px;
-      margin: 20px auto;
-      display: block;
+      margin-bottom: 20px;
     }
     .buttons {
       text-align: center;
@@ -55,28 +54,10 @@
       background-color: orange;
       margin-top: 20px;
     }
+    a {
+      color: #00bfff;
+    }
   </style>
-  .buttons {
-  text-align: center;
-  margin: 40px 0;
-}
-.buttons a {
-  display: inline-block;
-  margin: 10px;
-  padding: 12px 24px;
-  text-decoration: none;
-  font-weight: bold;
-  border-radius: 8px;
-  color: white;
-}
-.call { background-color: green; }
-.vk { background-color: #0077ff; }
-.tg { background-color: #229ED9; }
-.consult {
-  background-color: orange;
-  margin-top: 20px;
-}
-
 </head>
 <body>
 
@@ -84,7 +65,9 @@
 
   <section>
     <h2>О нас</h2>
-    <p>Мы — команда профессионалов из компании «Алмастрой», работаем в Анапе и Анапском районе. Наша сильная сторона — стильные, современные дома в направлениях хай-тек и минимализм. Строим качественно, надёжно и в срок.</p>
+    <p>
+      Мы — команда профессионалов из компании «Алмастрой», работаем в Анапе и Анапском районе. Наша сильная сторона — стильные, современные дома в направлениях хай-тек и минимализм. Строим качественно, надёжно и в срок.
+    </p>
   </section>
 
   <section>
@@ -99,27 +82,34 @@
 
   <section class="portfolio">
     <h2>Портфолио</h2>
-    <img src="1.png" alt="Пример дома 1"/>
-    <img src="2.png" alt="Пример дома 2"/>
-    <img src="3.png" alt="Пример дома 3"/>
+    <img src="1.png" alt="Пример дома 1" />
+    <img src="2.png" alt="Пример дома 2" />
+    <img src="3.png" alt="Пример дома 3" />
   </section>
 
   <section>
     <h2>Уникальное предложение — строительство дома</h2>
-    <p>Компания «Алмастрой» предлагает готовый проект современного дома в Анапе. Стильный фасад, продуманная планировка и минимальные сроки строительства.</p>
-    <p><strong>Скачайте PDF с планировками и сметой:</strong></p>
-    <p>📄 <a href="Plan #5768206 2025-04
-<section class="buttons">
-  <h2>Связаться с нами</h2>
+    <p>
+      Компания «Алмастрой» предлагает готовый проект современного дома в Анапе. Стильный фасад, продуманная планировка и минимальные сроки строительства.
+    </p>
+    <p>
+      📎 <a href="Plan%20%235768206%202025-04-06%2015.31%20(1).pdf" download>Скачать проект дома (PDF)</a>
+    </p>
+  </section>
 
-  <a href="tel:+79999999999" class="call">Позвонить</a>
-  <a href="https://vk.com" class="vk" target="_blank">ВКонтакте</a>
-  <a href="https://t.me/Chat_alma_bot" class="tg" target="_blank">Telegram</a>
+  <section class="buttons">
+    <h2>Связаться с нами</h2>
+    <a href="tel:+79999999999" class="call">Позвонить</a>
+    <a href="https://vk.com" class="vk" target="_blank">ВКонтакте</a>
+    <a href="https://t.me/Chat_alma_bot" class="tg" target="_blank">Telegram</a>
+    <div>
+      <a href="#" class="consult">Заказать консультацию</a>
+    </div>
+  </section>
 
-  <div>
-    <a href="#" class="consult">Заказать консультацию</a>
-  </div>
-</section>
+</body>
+</html>
+
 
 
 
