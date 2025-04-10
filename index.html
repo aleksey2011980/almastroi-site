@@ -48,13 +48,15 @@
       z-index: -1;
     }
 
-    $1
-    .logo img {
-      height: 120px;
-      width: auto;
+    .logo {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      z-index: 3;
     }
 
-    P0px;
+    .logo img {
+      height: 70px;
       width: auto;
     }
 
@@ -195,11 +197,10 @@
       text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
     }
 
-    $1
-      .logo img {
-        height: 80px;
+    @media (max-width: 768px) {
+      header {
+        height: 300px;
       }
-    }
 
       .header-content {
         bottom: 15px;
@@ -214,7 +215,8 @@
         font-size: 0.95rem;
       }
 
-      H0px;
+      .logo img {
+        height: 40px;
       }
     }
   </style>
