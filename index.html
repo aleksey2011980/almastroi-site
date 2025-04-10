@@ -34,30 +34,30 @@
 
     .header-content {
       position: absolute;
-      bottom: 10%;
+      bottom: 5%;
       width: 100%;
       text-align: center;
       padding: 0 20px;
+      z-index: 1;
     }
 
     .header-content h1 {
-      font-size: 3rem;
+      font-size: 2.4rem;
       font-weight: 700;
       margin-bottom: 10px;
-      text-shadow: 0 3px 10px rgba(0, 0, 0, 0.8);
+      text-shadow: 0 2px 6px rgba(0, 0, 0, 0.8);
     }
 
     .header-content p {
-      font-size: 1.4rem;
+      font-size: 1.1rem;
       font-weight: 400;
-      text-shadow: 0 2px 6px rgba(0, 0, 0, 0.7);
+      text-shadow: 0 1px 4px rgba(0, 0, 0, 0.7);
     }
 
     section {
       padding: 30px 20px;
       max-width: 1000px;
       margin: auto;
-      animation: fadeIn 1.5s ease;
     }
 
     h2 {
@@ -85,7 +85,6 @@
       border-radius: 12px;
       margin: 20px auto;
       display: block;
-      animation: fadeIn 1s ease;
     }
 
     .buttons {
@@ -124,26 +123,21 @@
       text-decoration: none;
     }
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(30px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
     @media (max-width: 768px) {
       header {
         height: 100vh;
       }
 
+      .header-content {
+        bottom: 4%;
+      }
+
       .header-content h1 {
-        font-size: 1.8rem;
+        font-size: 1.5rem;
       }
 
       .header-content p {
-        font-size: 1rem;
-      }
-
-      .header-content {
-        bottom: 6%;
+        font-size: 0.9rem;
       }
     }
   </style>
@@ -163,11 +157,9 @@
 
   <section>
     <h2>О нас</h2>
-    <p>
-      Мы — строительная компания «Алмастрой» из Анапы.  
-      С 2000 года проектируем и строим частные дома под ключ: от фундамента до отделки.  
-      Специализируемся на современных стилях — хай-тек и минимализм, работаем официально, по договору.
-    </p>
+    <p>Мы — строительная компания «Алмастрой» из Анапы.  
+    С 2000 года проектируем и строим частные дома под ключ: от фундамента до отделки.  
+    Специализируемся на современных стилях — хай-тек и минимализм, работаем официально, по договору.</p>
   </section>
 
   <section>
@@ -201,7 +193,7 @@
       <a href="tel:+79385365965" class="call">Позвонить</a>
       <a href="https://vk.com/almastroi" target="_blank" class="vk">ВКонтакте</a>
       <a href="https://t.me/almastroi" target="_blank" class="tg">Telegram</a>
-      <a href="https://www.youtube.com/watch?v=NYR8SUm5X5o&list=PLGdNtAnsv2V22LblaPxYEaRDWQRysQWCb&index=7" target="_blank" class="yt">YouTube</a>
+      <a href="https://www.youtube.com/watch?v=NYR8SUm5X5o" target="_blank" class="yt">YouTube</a>
     </div>
   </section>
 
