@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -20,6 +19,7 @@
       width: 100%;
       height: 100vh;
       overflow: hidden;
+      margin-bottom: 20px;
     }
 
     header video {
@@ -34,17 +34,24 @@
 
     .header-content {
       position: absolute;
-      top: 30%;
+      bottom: 7%;
       width: 100%;
       text-align: center;
       color: white;
       text-shadow: 0 0 10px rgba(0,0,0,0.7);
       z-index: 1;
+      animation: fadeIn 2s ease;
+      padding: 0 15px;
     }
 
     .header-content h1 {
       font-size: 2.8rem;
       margin-bottom: 10px;
+      transition: transform 0.3s ease;
+    }
+
+    .header-content h1:hover {
+      transform: scale(1.05);
     }
 
     .header-content p {
@@ -55,6 +62,7 @@
       padding: 30px 20px;
       max-width: 1000px;
       margin: auto;
+      animation: fadeIn 1.5s ease;
     }
 
     h2 {
@@ -82,6 +90,7 @@
       border-radius: 12px;
       margin: 20px auto;
       display: block;
+      animation: fadeIn 1s ease;
     }
 
     .buttons {
@@ -108,7 +117,7 @@
     .vk { background-color: #0077ff; }
     .tg { background-color: #229ED9; }
     .yt { background-color: #ff0000; color: white; }
-    .consult { background-color: orange; }
+    .consult { background-color: orange; display: inline-block; margin-top: 20px; }
 
     .pdf {
       margin-top: 20px;
@@ -120,31 +129,20 @@
       text-decoration: none;
     }
 
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
     @media (max-width: 768px) {
-      header {
-        height: 100vh;
-        overflow: hidden;
-      }
-
-      header video {
-        object-fit: cover;
-        width: 100%;
-        height: 100%;
-      }
-
       .header-content {
-        top: auto;
         bottom: 5%;
-        position: absolute;
-        padding: 0 15px;
       }
-
       .header-content h1 {
         font-size: 1.6rem;
       }
-
       .header-content p {
-        font-size: 0.95rem;
+        font-size: 1rem;
       }
     }
   </style>
@@ -168,6 +166,7 @@
       Мы — строительная компания «Алмастрой» из Анапы.  
       С 2000 года проектируем и строим частные дома под ключ: от фундамента до отделки.  
       Специализируемся на современных стилях — хай-тек и минимализм, работаем официально, по договору.  
+      <br><br>
     </p>
   </section>
 
@@ -202,10 +201,9 @@
       <a href="tel:+79385365965" class="call">Позвонить</a>
       <a href="https://vk.com/almastroi" target="_blank" class="vk">ВКонтакте</a>
       <a href="https://t.me/almastroi" target="_blank" class="tg">Telegram</a>
-      <a href="https://www.youtube.com/watch?v=NYR8SUm5X5o" target="_blank" class="yt">YouTube</a>
+      <a href="https://www.youtube.com/watch?v=NYR8SUm5X5o&list=PLGdNtAnsv2V22LblaPxYEaRDWQRysQWCb&index=7" target="_blank" class="yt">YouTube</a>
     </div>
   </section>
 
 </body>
 </html>
-
