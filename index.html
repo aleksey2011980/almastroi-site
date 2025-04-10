@@ -33,12 +33,10 @@
     }
 
     .header-content {
-      position: absolute;
-      bottom: 6%;
-      width: 100%;
-      text-align: center;
+      position: relative;
       z-index: 1;
-      padding: 0 20px;
+      text-align: center;
+      top: 30%;
       color: white;
       text-shadow: 0 0 10px rgba(0,0,0,0.7);
       animation: fadeIn 2s ease;
@@ -134,34 +132,33 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-  @media (max-width: 768px) {
-  header {
-    height: 100vh;
-    overflow: hidden;
-  }
+    @media (max-width: 768px) {
+      header {
+        height: 100vh;
+        overflow: hidden;
+      }
 
-  header video {
-    object-fit: cover;
-    width: 100%;
-    height: 100%;
-  }
+      header video {
+        object-fit: cover;
+        width: 100%;
+        height: 100%;
+      }
 
-  .header-content {
-    top: auto;
-    bottom: 6%;
-    padding: 0 15px;
-  }
+      .header-content {
+        top: auto;
+        bottom: 5%;
+        position: absolute;
+        width: 100%;
+        padding: 0 15px;
+      }
 
-  .header-content h1 {
-    font-size: 1.4rem;
-  }
+      .header-content h1 {
+        font-size: 1.6rem;
+      }
 
-  .header-content p {
-    font-size: 0.85rem;
-  }
-}
-
-
+      .header-content p {
+        font-size: 0.95rem;
+      }
     }
   </style>
 </head>
@@ -184,7 +181,6 @@
       Мы — строительная компания «Алмастрой» из Анапы.  
       С 2000 года проектируем и строим частные дома под ключ: от фундамента до отделки.  
       Специализируемся на современных стилях — хай-тек и минимализм, работаем официально, по договору.  
-      <br><br>
     </p>
   </section>
 
@@ -219,7 +215,7 @@
       <a href="tel:+79385365965" class="call">Позвонить</a>
       <a href="https://vk.com/almastroi" target="_blank" class="vk">ВКонтакте</a>
       <a href="https://t.me/almastroi" target="_blank" class="tg">Telegram</a>
-      <a href="https://www.youtube.com/watch?v=NYR8SUm5X5o&list=PLGdNtAnsv2V22LblaPxYEaRDWQRysQWCb&index=7" target="_blank" class="yt">YouTube</a>
+      <a href="https://www.youtube.com/watch?v=NYR8SUm5X5o" target="_blank" class="yt">YouTube</a>
     </div>
   </section>
 
