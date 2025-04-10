@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Алмастрой Анапа</title>
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
   <style>
     body {
@@ -42,6 +43,18 @@
       height: 100%;
       background: rgba(0, 0, 0, 0.35);
       z-index: -1;
+    }
+
+    .logo {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      z-index: 3;
+    }
+
+    .logo img {
+      height: 50px;
+      width: auto;
     }
 
     .header-content {
@@ -96,7 +109,6 @@
       font-size: 1.1rem;
       line-height: 1.6;
       text-align: center;
-      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
     }
 
     ul {
@@ -126,7 +138,6 @@
       border-radius: 8px;
       color: white;
       transition: transform 0.3s ease;
-      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
     }
 
     .buttons a:hover {
@@ -147,7 +158,6 @@
     .pdf a {
       color: #00ffff;
       text-decoration: none;
-      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
     }
 
     @media (max-width: 768px) {
@@ -167,6 +177,10 @@
       .header-content p {
         font-size: 1rem;
       }
+
+      .logo img {
+        height: 36px;
+      }
     }
   </style>
 </head>
@@ -177,6 +191,11 @@
       <source src="header-video.mp4" type="video/mp4">
       Ваш браузер не поддерживает видео.
     </video>
+
+    <div class="logo">
+      <img src="favicon.ico" alt="Логотип Алмастрой">
+    </div>
+
     <div class="header-content">
       <h1>ООО АЛМАСТРОЙ</h1>
       <p>Современное строительство домов в стиле хай-тек и минимализм</p>
