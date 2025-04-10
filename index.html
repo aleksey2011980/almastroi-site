@@ -11,11 +11,7 @@
       font-family: 'Montserrat', sans-serif;
       background-color: #000;
       color: #fff;
-    }
-
-    .yt {
-      background-color: #ff0000;
-      color: #ffffff;
+      scroll-behavior: smooth;
     }
 
     header {
@@ -43,11 +39,17 @@
       top: 30%;
       color: white;
       text-shadow: 0 0 10px rgba(0,0,0,0.7);
+      animation: fadeIn 2s ease;
     }
 
     .header-content h1 {
       font-size: 2.8rem;
       margin-bottom: 10px;
+      transition: transform 0.3s ease;
+    }
+
+    .header-content h1:hover {
+      transform: scale(1.05);
     }
 
     .header-content p {
@@ -56,6 +58,7 @@
 
     section {
       padding: 20px;
+      animation: fadeIn 1.5s ease;
     }
 
     h2 {
@@ -70,6 +73,7 @@
       border-radius: 12px;
       margin: 20px auto;
       display: block;
+      animation: fadeIn 1s ease;
     }
 
     .buttons {
@@ -85,15 +89,22 @@
       font-weight: bold;
       border-radius: 8px;
       color: white;
+      transition: transform 0.3s ease;
+    }
+
+    .buttons a:hover {
+      transform: scale(1.05);
     }
 
     .call { background-color: green; }
     .vk { background-color: #0077ff; }
     .tg { background-color: #229ED9; }
+    .yt { background-color: #ff0000; color: white; }
     .consult { background-color: orange; display: inline-block; margin-top: 20px; }
 
     .pdf {
       margin-top: 20px;
+      text-align: center;
     }
 
     .pdf a {
@@ -112,6 +123,11 @@
         font-size: 1rem;
       }
     }
+
+    @keyframes fadeIn {
+      0% { opacity: 0; transform: translateY(20px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
   </style>
 </head>
 <body>
@@ -129,9 +145,9 @@
 
   <section>
     <h2>О нас</h2>
-    <p>Мы — строительная компания «Алмастрой» из Анапы.
-С 2000 года проектируем и строим частные дома под ключ: от фундамента до отделки.
-Специализируемся на современных стилях — хай-тек и минимализм, работаем официально, по договору.
+    <p>Мы — строительная компания «Алмастрой» из Анапы.  
+С 2000 года проектируем и строим частные дома под ключ: от фундамента до отделки.  
+Специализируемся на современных стилях — хай-тек и минимализм, работаем официально, по договору.  
 Наш подход — это прозрачные сметы, сроки без откатов и результат, которым можно гордиться.</p>
   </section>
 
@@ -147,18 +163,16 @@
 
   <section class="portfolio">
     <h2>Проект дома ALMA-HOUSE 200</h2>
-    <img src="1.png" alt="Проект 1" />
-    <img src="2.png" alt="Проект 2" />
-    <img src="3.png" alt="Проект 3" />
+    <img src="фасад 3.png" alt="Фасад дома" />
+    <img src="лестница на крышу.png" alt="Лестница на крышу" />
+    <img src="кровля 1.png" alt="Кровля дома" />
   </section>
 
   <section>
-    <h2>Уникальное предложение — строительство дома 200 м.кв. по цене двухкомнатной квартиры </h2>
+    <h2>Уникальное предложение — строительство дома 200 м² по цене двухкомнатной квартиры</h2>
     <p>Компания «Алмастрой» предлагает готовый проект современного дома в Анапе. Стильный фасад, продуманная планировка и минимальные сроки строительства.</p>
     <div class="pdf">
-      📥 <a href="https://disk.yandex.ru/d/EpUL3zqK__P_Og" target="_blank">
-        Скачать проект дома (.zip, 74 МБ)
-      </a>
+      📥 <a href="https://disk.yandex.ru/d/EpUL3zqK__P_Og" target="_blank">Скачать проект дома (.zip, 74 МБ)</a>
     </div>
   </section>
 
@@ -168,9 +182,10 @@
       <a href="tel:+79385365965" class="call">Позвонить</a>
       <a href="https://vk.com/almastroi" target="_blank" class="vk">ВКонтакте</a>
       <a href="https://t.me/almastroi" target="_blank" class="tg">Telegram</a>
-      <a href="https://www.youtube.com/watch?v=NYR8SUm5X5o&list=PLGdNtAnsv2V22LblaPxYEaRDWQRysQWCb&index=7" target="_blank" class="yt">YouTube</a><br/><br/>
+      <a href="https://www.youtube.com/watch?v=NYR8SUm5X5o&list=PLGdNtAnsv2V22LblaPxYEaRDWQRysQWCb&index=7" target="_blank" class="yt">YouTube</a>
     </div>
   </section>
 
 </body>
 </html>
+
