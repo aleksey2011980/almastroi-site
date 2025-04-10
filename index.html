@@ -57,14 +57,29 @@
     }
 
     section {
-      padding: 20px;
+      padding: 30px 20px;
+      max-width: 1000px;
+      margin: auto;
       animation: fadeIn 1.5s ease;
     }
 
     h2 {
-      font-size: 24px;
-      margin-bottom: 10px;
+      font-size: 28px;
+      margin-bottom: 20px;
       text-align: center;
+    }
+
+    p {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      text-align: center;
+    }
+
+    ul {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      list-style-position: inside;
+      padding-left: 10px;
     }
 
     .portfolio img {
@@ -112,6 +127,11 @@
       text-decoration: none;
     }
 
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
     @media (max-width: 768px) {
       header {
         height: 300px;
@@ -122,11 +142,6 @@
       .header-content p {
         font-size: 1rem;
       }
-    }
-
-    @keyframes fadeIn {
-      0% { opacity: 0; transform: translateY(20px); }
-      100% { opacity: 1; transform: translateY(0); }
     }
   </style>
 </head>
@@ -145,10 +160,13 @@
 
   <section>
     <h2>О нас</h2>
-    <p>Мы — строительная компания «Алмастрой» из Анапы.  
-С 2000 года проектируем и строим частные дома под ключ: от фундамента до отделки.  
-Специализируемся на современных стилях — хай-тек и минимализм, работаем официально, по договору.  
-Наш подход — это прозрачные сметы, сроки без откатов и результат, которым можно гордиться.</p>
+    <p>
+      Мы — строительная компания «Алмастрой» из Анапы.  
+      С 2000 года проектируем и строим частные дома под ключ: от фундамента до отделки.  
+      Специализируемся на современных стилях — хай-тек и минимализм, работаем официально, по договору.  
+      <br><br>
+      <strong>Наш подход — это прозрачные сметы, сроки без откатов и результат, которым можно гордиться.</strong>
+    </p>
   </section>
 
   <section>
@@ -188,4 +206,5 @@
 
 </body>
 </html>
+
 
