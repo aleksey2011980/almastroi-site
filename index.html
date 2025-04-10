@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Алмастрой Анапа</title>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
   <style>
     body {
       margin: 0;
@@ -37,26 +37,29 @@
       z-index: 1;
       text-align: center;
       top: 70%;
-      transform: translateY(-70%);
+      transform: translateY(-50%);
       color: white;
       text-shadow: 0 0 10px rgba(0,0,0,0.7);
       animation: fadeIn 2s ease;
+      padding: 0 10px;
     }
 
     .header-content h1 {
-      font-size: 3.2rem;
-      font-weight: 700;
+      font-size: 2.8rem;
+      font-weight: 800;
       margin-bottom: 10px;
+      transition: transform 0.3s ease;
+      line-height: 1.2;
+      word-break: break-word;
     }
 
     .header-content p {
       font-size: 1.4rem;
-      font-weight: 400;
     }
 
     section {
-      padding: 40px 20px;
-      max-width: 960px;
+      padding: 30px 20px;
+      max-width: 1000px;
       margin: auto;
       animation: fadeIn 1.5s ease;
     }
@@ -65,19 +68,19 @@
       font-size: 28px;
       margin-bottom: 20px;
       text-align: center;
-      font-weight: 700;
     }
 
-    p, ul {
+    p {
       font-size: 1.1rem;
-      line-height: 1.7;
-      margin: 0 auto 20px;
-      max-width: 800px;
+      line-height: 1.6;
+      text-align: center;
     }
 
     ul {
-      list-style-type: disc;
-      padding-left: 40px;
+      font-size: 1.1rem;
+      line-height: 1.6;
+      list-style-position: inside;
+      padding-left: 10px;
     }
 
     .portfolio img {
@@ -113,6 +116,7 @@
     .vk { background-color: #0077ff; }
     .tg { background-color: #229ED9; }
     .yt { background-color: #ff0000; color: white; }
+    .consult { background-color: orange; display: inline-block; margin-top: 20px; }
 
     .pdf {
       margin-top: 20px;
@@ -131,10 +135,13 @@
 
     @media (max-width: 768px) {
       header {
-        height: 300px;
+        height: 400px;
+      }
+      .header-content {
+        top: 60%;
       }
       .header-content h1 {
-        font-size: 1.8rem;
+        font-size: 1.6rem;
       }
       .header-content p {
         font-size: 1rem;
@@ -143,6 +150,7 @@
   </style>
 </head>
 <body>
+
   <header>
     <video autoplay muted loop playsinline>
       <source src="header-video.mp4" type="video/mp4">
@@ -156,7 +164,11 @@
 
   <section>
     <h2>О нас</h2>
-    <p>Мы — строительная компания «Алмастрой» из Анапы. С 2000 года проектируем и строим частные дома под ключ: от фундамента до отделки. Специализируемся на современных стилях — хай-тек и минимализм, работаем официально, по договору. Наш подход — это прозрачные сметы, сроки без откатов и результат, которым можно гордиться.</p>
+    <p>
+      Мы — строительная компания «Алмастрой» из Анапы.  
+      С 2000 года проектируем и строим частные дома под ключ: от фундамента до отделки.  
+      Специализируемся на современных стилях — хай-тек и минимализм, работаем официально, по договору.  
+    </p>
   </section>
 
   <section>
@@ -193,5 +205,6 @@
       <a href="https://www.youtube.com/watch?v=NYR8SUm5X5o&list=PLGdNtAnsv2V22LblaPxYEaRDWQRysQWCb&index=7" target="_blank" class="yt">YouTube</a>
     </div>
   </section>
+
 </body>
 </html>
