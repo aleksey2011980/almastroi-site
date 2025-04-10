@@ -157,10 +157,20 @@
       color: white;
       transition: transform 0.3s ease;
       text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.05);
+      }
     }
 
     .buttons a:hover {
-      transform: scale(1.05);
+      transform: scale(1.1);
     }
 
     .call { background-color: green; }
