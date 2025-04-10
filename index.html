@@ -155,17 +155,23 @@
       font-weight: bold;
       border-radius: 8px;
       color: white;
-      transition: transform 0.3s ease;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
       text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
-      animation: pulse 2s infinite;
+      animation: glowPulse 1.5s infinite ease-in-out;
     }
 
-    @keyframes pulse {
-      0%, 100% {
+    @keyframes glowPulse {
+      0% {
         transform: scale(1);
+        box-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
       }
       50% {
-        transform: scale(1.05);
+        transform: scale(1.07);
+        box-shadow: 0 0 20px rgba(255, 255, 255, 0.9);
+      }
+      100% {
+        transform: scale(1);
+        box-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
       }
     }
 
