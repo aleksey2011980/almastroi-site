@@ -1,177 +1,173 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Алмастрой Анапа</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
   <style>
+    * {margin: 0; padding: 0; box-sizing: border-box;}
     body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background-color: #000;
-      color: #fff;
+      font-family: 'Montserrat', sans-serif;
+      background-color: #f4f4f4;
+      color: #222;
+      line-height: 1.6;
     }
-
     header {
-      position: relative;
-      width: 100%;
-      height: 100vh;
-      overflow: hidden;
-      margin-bottom: 20px;
-    }
-
-    header video {
-      position: absolute;
+      position: fixed;
       top: 0;
-      left: 0;
       width: 100%;
-      height: 100%;
-      object-fit: cover;
-      z-index: -1;
+      background: rgba(255,255,255,0.9);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      z-index: 1000;
     }
-
-    .header-content {
-      position: relative;
-      z-index: 1;
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: auto;
+      padding: 1rem;
+    }
+    .nav a {
+      text-decoration: none;
+      color: #000;
+      margin-left: 20px;
+      font-weight: 600;
+    }
+    .hero {
+      margin-top: 80px;
+      height: 100vh;
+      background: url('cover-placeholder.jpg') center/cover no-repeat;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       text-align: center;
-      top: 30%;
       color: white;
-      text-shadow: 0 0 10px rgba(0,0,0,0.7);
     }
-
-    .header-content h1 {
-      font-size: 2.8rem;
-      margin-bottom: 10px;
+    .hero h1 {
+      font-size: 3rem;
+      background-color: rgba(0,0,0,0.6);
+      padding: 1rem;
+      border-radius: 8px;
     }
-
-    .header-content p {
-      font-size: 1.4rem;
-    }
-
     section {
-      padding: 20px;
+      padding: 60px 20px;
+      max-width: 1000px;
+      margin: auto;
     }
-
-    h2 {
-      font-size: 24px;
-      margin-bottom: 10px;
+    section h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
       text-align: center;
     }
-
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      margin-top: 2rem;
+    }
+    .feature {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.05);
+      text-align: center;
+    }
     .portfolio img {
       width: 100%;
-      max-width: 800px;
+      max-width: 100%;
       border-radius: 12px;
-      margin: 20px auto;
-      display: block;
-    }
-
-    .buttons {
-      text-align: center;
-      margin: 40px 0;
-    }
-
-    .buttons a {
-      display: inline-block;
-      margin: 10px;
-      padding: 12px 24px;
-      text-decoration: none;
-      font-weight: bold;
-      border-radius: 8px;
-      color: white;
-    }
-
-    .call { background-color: green; }
-    .vk { background-color: #0077ff; }
-    .tg { background-color: #229ED9; }
-    .consult { background-color: orange; display: inline-block; margin-top: 20px; }
-
-    .pdf {
       margin-top: 20px;
     }
-
-    .pdf a {
-      color: #00ffff;
-      text-decoration: none;
+    .contact-buttons {
+      text-align: center;
+      margin-top: 30px;
     }
-
-    @media (max-width: 768px) {
-      header {
-        height: 300px;
-      }
-      .header-content h1 {
-        font-size: 1.8rem;
-      }
-      .header-content p {
-        font-size: 1rem;
-      }
-      .yt {
-  background-color: #ff0000;color: #ffffff; 
-}
-
+    .contact-buttons a {
+      display: inline-block;
+      margin: 10px;
+      padding: 12px 20px;
+      background-color: #229ED9;
+      color: #fff;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    footer {
+      background: #111;
+      color: #ccc;
+      text-align: center;
+      padding: 30px 20px;
     }
   </style>
 </head>
 <body>
-
   <header>
-    <video autoplay muted loop playsinline>
-      <source src="header-video.mp4" type="video/mp4">
-      Ваш браузер не поддерживает видео.
-    </video>
-    <div class="header-content">
-      <h1>ООО АЛМАСТРОЙ</h1>
-      <p>Современное строительство домов в стиле хай-тек и минимализм</p>
+    <div class="nav">
+      <div><strong>АЛМАСТРОЙ</strong></div>
+      <div>
+        <a href="#about">О нас</a>
+        <a href="#services">Услуги</a>
+        <a href="#portfolio">Портфолио</a>
+        <a href="#contacts">Контакты</a>
+      </div>
     </div>
   </header>
 
-  <section>
-    <h2>О нас</h2>
-    <p>Мы — строительная компания «Алмастрой» из Анапы.
-С 2000 года проектируем и строим частные дома под ключ: от фундамента до отделки.
-Специализируемся на современных стилях — хай-тек и минимализм, работаем официально, по договору.
-Наш подход — это прозрачные сметы, сроки без откатов и результат, которым можно гордиться.</p>
+  <div class="hero">
+    <h1>Строим современные дома в Анапе</h1>
+  </div>
+
+  <section id="about">
+    <h2>О компании</h2>
+    <p>Алмастрой — команда строителей, специализирующихся на современных домах в стиле хай-тек и минимализм. Работаем по договору, с гарантией и соблюдением сроков. Ведём объекты под ключ.</p>
   </section>
 
-  <section>
-    <h2>Услуги</h2>
-    <ul>
-      <li>Проектирование и строительство домов под ключ</li>
-      <li>Фундаменты, коробки, фасады, кровля</li>
-      <li>Инженерные сети и внутренняя отделка</li>
-      <li>Благоустройство и ландшафтные работы</li>
-    </ul>
-  </section>
-
-  <section class="portfolio">
-    <h2>Проект дома ALMA-HOUSE 200</h2>
-    <img src="1.png" alt="Проект 1" />
-    <img src="2.png" alt="Проект 2" />
-    <img src="3.png" alt="Проект 3" />
-  </section>
-
-  <section>
-    <h2>Уникальное предложение — строительство дома 200 м.кв. по цене двухкомнатной квартиры </h2>
-    <p>Компания «Алмастрой» предлагает готовый проект современного дома в Анапе. Стильный фасад, продуманная планировка и минимальные сроки строительства.</p>
-    <div class="pdf">
-    📥 <a href="https://disk.yandex.ru/d/EpUL3zqK__P_Og" target="_blank">
-    Скачать проект дома (.zip, 74 МБ)</a>
+  <section id="services">
+    <h2>Наши услуги</h2>
+    <div class="features">
+      <div class="feature">
+        <h3>Проектирование</h3>
+        <p>Индивидуальные и типовые проекты с учётом участка и требований.</p>
+      </div>
+      <div class="feature">
+        <h3>Строительство</h3>
+        <p>Фундамент, коробка, крыша, фасады, инженерия и отделка.</p>
+      </div>
+      <div class="feature">
+        <h3>Под ключ</h3>
+        <p>Сдаём готовый дом — без головной боли, строго по плану.</p>
+      </div>
     </div>
   </section>
 
-  <section>
+  <section id="portfolio">
+    <h2>Портфолио</h2>
+    <div class="portfolio">
+      <img src="project1.jpg" alt="Проект 1">
+      <img src="project2.jpg" alt="Проект 2">
+      <img src="project3.jpg" alt="Проект 3">
+    </div>
+  </section>
+
+  <section id="contacts">
     <h2>Связаться с нами</h2>
-    <div class="buttons">
-      <a href="tel:+79385365965" class="call">Позвонить</a>
-      <a href="https://vk.com/almastroi" target="_blank" class="vk">ВКонтакте</a>
-      <a href="https://t.me/almastroi" target="_blank" class="tg">Telegram</a>
-      <a href="https://www.youtube.com/watch?v=NYR8SUm5X5o&list=PLGdNtAnsv2V22LblaPxYEaRDWQRysQWCb&index=7" target="_blank" class="yt">YouTube</a><br/> 
-<br/>
+    <div class="contact-buttons">
+      <a href="tel:+79385365965">Позвонить</a>
+      <a href="https://t.me/almastroi" target="_blank">Telegram</a>
+      <a href="https://vk.com/almastroi" target="_blank">ВКонтакте</a>
+      <a href="https://www.youtube.com/watch?v=NYR8SUm5X5o&list=PLGdNtAnsv2V22LblaPxYEaRDWQRysQWCb&index=7" target="_blank">YouTube</a>
     </div>
   </section>
 
+  <footer>
+    <p>&copy; 2025 Алмастрой. Современное строительство в Анапе.</p>
+  </footer>
 </body>
 </html>
+
 
 
 
