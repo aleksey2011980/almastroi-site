@@ -1,19 +1,11 @@
-<!DOCTYPE html>
+OCTYPE html>
 <html lang="ru">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Алмастрой Анапа</title>
+  <title>Алмастрой luxury house</title>
   <link rel="icon" href="favicon.ico" type="image/x-icon">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
-
-  <!-- Open Graph для соцсетей -->
-  <meta property="og:title" content="Алмастрой Анапа — строительство luxury-house">
-  <meta property="og:description" content="Современные дома в Анапе. Проекты, сметы, реализация под ключ.">
-  <meta property="og:image" content="https://luxury-house.site/preview.png">
-  <meta property="og:url" content="https://luxury-house.site/">
-  <meta property="og:type" content="website">
-
   <style>
     html {
       scroll-behavior: smooth;
@@ -64,7 +56,7 @@
     }
 
     .logo img {
-      height: 90px;
+      height: 80px;
       width: auto;
     }
 
@@ -109,6 +101,18 @@
       padding: 30px 20px;
       max-width: 1000px;
       margin: auto;
+      animation: fadeInSection 1.2s ease-in-out both;
+    }
+
+    @keyframes fadeInSection {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     h2 {
@@ -136,6 +140,7 @@
       border-radius: 12px;
       margin: 20px auto;
       display: block;
+      animation: fadeInSection 1s ease both;
     }
 
     .buttons {
@@ -156,40 +161,30 @@
       animation: glowPulse 1.5s infinite ease-in-out;
     }
 
-    .call {
-      background-color: green;
-      box-shadow: 0 0 12px green;
-    }
-
-    .vk {
-      background-color: #0077ff;
-      box-shadow: 0 0 12px #0077ff;
-    }
-
-    .tg {
-      background-color: #229ED9;
-      box-shadow: 0 0 12px #229ED9;
-    }
-
-    .yt {
-      background-color: #ff0000;
-      box-shadow: 0 0 12px #ff0000;
-    }
-
-    .consult {
-      background-color: orange;
-      box-shadow: 0 0 12px orange;
-    }
-
     @keyframes glowPulse {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.07); }
-      100% { transform: scale(1); }
+      0% {
+        transform: scale(1);
+        box-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
+      }
+      50% {
+        transform: scale(1.07);
+        box-shadow: 0 0 20px rgba(255, 255, 255, 0.9);
+      }
+      100% {
+        transform: scale(1);
+        box-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
+      }
     }
 
     .buttons a:hover {
       transform: scale(1.1);
     }
+
+    .call { background-color: green; }
+    .vk { background-color: #0077ff; }
+    .tg { background-color: #229ED9; }
+    .yt { background-color: #ff0000; color: white; }
+    .consult { background-color: orange; }
 
     .pdf {
       margin-top: 20px;
@@ -200,14 +195,6 @@
       color: #00ffff;
       text-decoration: none;
       text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
-    }
-
-    footer {
-      text-align: center;
-      padding: 20px;
-      font-size: 0.75rem;
-      color: #777;
-      background: #111;
     }
 
     @media (max-width: 768px) {
@@ -231,15 +218,10 @@
       .logo img {
         height: 80px;
       }
-
-      footer {
-        font-size: 0.7rem;
-        padding: 15px;
-      }
     }
   </style>
 </head>
-<body>
+<body><!D
 
  <header>
     <video autoplay muted loop playsinline>
