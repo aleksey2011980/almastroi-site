@@ -16,7 +16,7 @@
   <meta name="geo.position" content="44.89497;37.31674">
   <meta name="ICBM" content="44.89497, 37.31674">
 
-  <!-- Open Graph для соцсетей -->
+  <!-- Open Graph -->
   <meta property="og:title" content="Алмастрой Анапа — строительство luxury-house">
   <meta property="og:description" content="Современные дома в Анапе. Проекты, сметы, реализация под ключ.">
   <meta property="og:image" content="https://luxury-house.site/preview.png">
@@ -24,10 +24,7 @@
   <meta property="og:type" content="website">
 
   <style>
-    html {
-      scroll-behavior: smooth;
-    }
-
+    html { scroll-behavior: smooth; }
     body {
       margin: 0;
       font-family: 'Montserrat', sans-serif;
@@ -35,7 +32,6 @@
       color: #fff;
       text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
     }
-
     header {
       position: relative;
       width: 100%;
@@ -43,7 +39,6 @@
       overflow: hidden;
       margin-bottom: 20px;
     }
-
     header video {
       position: absolute;
       top: 0;
@@ -53,7 +48,6 @@
       object-fit: cover;
       z-index: -2;
     }
-
     header::after {
       content: "";
       position: absolute;
@@ -64,19 +58,16 @@
       background: rgba(0, 0, 0, 0.35);
       z-index: -1;
     }
-
     .logo {
       position: absolute;
       top: 20px;
       left: 20px;
       z-index: 3;
     }
-
     .logo img {
       height: 90px;
       width: auto;
     }
-
     .phone {
       position: absolute;
       top: 30px;
@@ -87,15 +78,14 @@
       z-index: 3;
       text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
       display: flex;
-      align-items: center;
-      gap: 6px;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 4px;
     }
-
-    .phone::before {
-      content: '\260E'; /* Юникод символ трубки */
-      font-size: 1.1rem;
+    .phone div::before {
+      content: '\260E';
+      margin-right: 6px;
     }
-
     .header-content {
       position: absolute;
       bottom: 40px;
@@ -110,54 +100,34 @@
       animation: fadeIn 2s ease forwards;
       box-sizing: border-box;
     }
-
     .header-content h1 {
       font-size: 2.8rem;
       font-weight: 600;
       margin: 0 0 10px;
     }
-
     .header-content p {
       font-size: 1.4rem;
       margin: 0;
     }
-
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translate(-50%, 30px);
-      }
-      to {
-        opacity: 1;
-        transform: translate(-50%, 0);
-      }
-    }
-
     section {
       padding: 30px 20px;
       max-width: 1000px;
       margin: auto;
     }
-
     h2 {
       font-size: 28px;
       margin-bottom: 20px;
       text-align: center;
-      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
     }
-
     p, ul, li {
       font-size: 1.1rem;
       line-height: 1.6;
       text-align: center;
-      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
     }
-
     ul {
       list-style-position: inside;
       padding-left: 10px;
     }
-
     .portfolio img {
       width: 100%;
       max-width: 800px;
@@ -165,12 +135,10 @@
       margin: 20px auto;
       display: block;
     }
-
     .buttons {
       text-align: center;
       margin: 40px 0;
     }
-
     .buttons a {
       display: inline-block;
       margin: 10px;
@@ -179,78 +147,45 @@
       font-weight: bold;
       border-radius: 8px;
       color: white;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
       text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
-      transition: transform 0.3s ease;
-      animation: pulseMove 1.8s infinite ease-in-out;
+      animation: glowPulse 1.5s infinite ease-in-out;
     }
-
-    @keyframes pulseMove {
-      0%, 100% {
-        transform: scale(1) translateY(0);
-        box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
-      }
-      50% {
-        transform: scale(1.05) translateY(-3px);
-        box-shadow: 0 0 25px rgba(255, 255, 255, 0.8);
-      }
+    @keyframes glowPulse {
+      0% { transform: scale(1); box-shadow: 0 0 8px rgba(255, 255, 255, 0.4); }
+      50% { transform: scale(1.07); box-shadow: 0 0 20px rgba(255, 255, 255, 0.9); }
+      100% { transform: scale(1); box-shadow: 0 0 8px rgba(255, 255, 255, 0.4); }
     }
-
-    .buttons a.call { background-color: green; }
-    .buttons a.vk { background-color: #0077ff; }
-    .buttons a.tg { background-color: #229ED9; }
-    .buttons a.yt { background-color: #ff0000; color: white; }
-    .buttons a.consult { background-color: orange; }
-
+    .buttons a:hover {
+      transform: scale(1.1);
+    }
+    .call { background-color: green; }
+    .vk { background-color: #0077ff; }
+    .tg { background-color: #229ED9; }
+    .yt { background-color: #ff0000; color: white; }
+    .consult { background-color: orange; }
     .pdf {
       margin-top: 20px;
       text-align: center;
     }
-
     .pdf a {
       color: #00ffff;
       text-decoration: none;
       text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
     }
-
     footer {
       text-align: center;
-      padding: 20px;
-      font-size: 0.75rem;
-      color: #777;
-      background: #111;
+      padding: 15px;
+      font-size: 0.9rem;
+      color: #ccc;
     }
-
     @media (max-width: 768px) {
-      header {
-        height: 300px;
-      }
-
-      .header-content {
-        bottom: 15px;
-        padding: 0 15px;
-      }
-
-      .header-content h1 {
-        font-size: 1.5rem;
-      }
-
-      .header-content p {
-        font-size: 0.95rem;
-      }
-
-      .logo img {
-        height: 80px;
-      }
-
-      .phone {
-        font-size: 0.8rem;
-        top: 25px;
-      }
-
-      footer {
-        font-size: 0.7rem;
-        padding: 15px;
-      }
+      header { height: 300px; }
+      .header-content { bottom: 15px; padding: 0 15px; }
+      .header-content h1 { font-size: 1.6rem; }
+      .header-content p { font-size: 1rem; }
+      .logo img { height: 70px; }
+      .phone { font-size: 0.9rem; top: 25px; right: 15px; }
     }
   </style>
 </head>
@@ -258,34 +193,25 @@
   <header>
     <video autoplay muted loop playsinline>
       <source src="header-video.mp4" type="video/mp4">
-      Ваш браузер не поддерживает видео.
     </video>
-
     <div class="logo">
       <img src="1.png" alt="Логотип Алмастрой">
     </div>
-
     <div class="phone">
-      <div>+7 (938) 536-58-65</div>
+      <div>+7 (938) 536-59-65</div>
       <div>+7 (86133) 7-99-16</div>
     </div>
-   
-
     <div class="header-content">
       <h1>ООО АЛМАСТРОЙ</h1>
       <p>Современное строительство домов в стиле хай-тек и минимализм</p>
     </div>
   </header>
-</body>
-</html>
-
   <section>
     <h2>О нас</h2>
-    <p>Мы — строительная компания «Алмастрой» город Анапа.  
-    С 2000 года проектируем и строим частные дома под ключ: от фундамента до отделки.  
+    <p>Мы — строительная компания «Алмастрой» город Анапа.
+    С 2000 года проектируем и строим частные дома под ключ: от фундамента до отделки.
     Специализируемся на современных стилях — хай-тек и минимализм, работаем официально, по договору.</p>
   </section>
-
   <section>
     <h2>Услуги</h2>
     <ul>
@@ -293,26 +219,25 @@
       <li>Фундаменты, коробки, фасады, кровля</li>
       <li>Инженерные сети и внутренняя отделка</li>
       <li>Благоустройство и ландшафтные работы</li>
-       <li>Подбор участка ( бесплатно )</li>
-       <li>Строительство бассейнов</li>
+      <li>Подбор участка (бесплатно)</li>
+      <li>Строительство бассейнов</li>
     </ul>
   </section>
-
   <section class="portfolio">
     <h2>Проект дома ALMA-HOUSE 200</h2>
     <img src="2.png" alt="Фасад дома" />
     <img src="3.png" alt="Лестница на крышу" />
     <img src="4.png" alt="Кровля дома" />
   </section>
-
   <section>
-    <h2>Строительство Hi-tech дома 235 м² по цене  квартиры</h2>
-    <p>Компания «Алмастрой» предлагает построить  дом в городе Анапа и Анапском районе. Современные технологии, энергосбережение и дизайн будущего — уже сегодня. Возможно строительство по вашему проекту.</p>
+    <h2>Строительство Hi-tech дома 235 м² по цене квартиры</h2>
+    <p>Компания «Алмастрой» предлагает построить дом в городе Анапа и Анапском районе.
+    Современные технологии, энергосбережение и дизайн будущего — уже сегодня.
+    Возможно строительство по вашему проекту.</p>
     <div class="pdf">
       📥 <a href="https://disk.yandex.ru/d/atXBGGPm1h6CLA" target="_blank">Скачать смету, проект дома (zip, 74 МБ)</a>
     </div>
   </section>
-
   <section>
     <h2>Хотите больше информации? Подписывайтесь на нас:</h2>
     <div class="buttons">
@@ -322,26 +247,17 @@
       <a href="https://www.youtube.com/watch?v=NYR8SUm5X5o&list=PLGdNtAnsv2V22LblaPxYEaRDWQRysQWCb&index=7" target="_blank" class="yt">YouTube</a>
     </div>
   </section>
-
-  <!-- Begin LeadBack code {literal} -->
   <script>
-      var _emv = _emv || [];
-      _emv['campaign'] = 'd9e76e452a5ee3a0c1c8c6aa';
-
-      (function() {
-          var em = document.createElement('script'); em.type = 'text/javascript'; em.async = true;
-          em.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'leadback.ru/js/leadback.js';
-          var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(em, s);
-      })();
+    var _emv = _emv || [];
+    _emv['campaign'] = 'd9e76e452a5ee3a0c1c8c6aa';
+    (function() {
+      var em = document.createElement('script'); em.type = 'text/javascript'; em.async = true;
+      em.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'leadback.ru/js/leadback.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(em, s);
+    })();
   </script>
-  <!-- End LeadBack code {/literal} -->
-
   <footer>
     © ООО «Алмастрой» 2000–2025
   </footer>
-
-</body>
-</html>
-
 </body>
 </html>
