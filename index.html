@@ -7,6 +7,11 @@
   <link rel="icon" href="favicon.ico" type="image/x-icon">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
 
+  <!-- SEO мета-теги -->
+  <meta name="description" content="Алмастрой — строительство современных домов под ключ в Анапе. Хайтек, минимализм, проекты, сметы, гарантия.">
+  <meta name="keywords" content="строительство домов Анапа, Алмастрой, хайтек, дома под ключ, современный дом Анапа">
+  <meta name="robots" content="index, follow">
+
   <!-- Open Graph для соцсетей -->
   <meta property="og:title" content="Алмастрой Анапа — строительство luxury-house">
   <meta property="og:description" content="Современные дома в Анапе. Проекты, сметы, реализация под ключ.">
@@ -153,16 +158,16 @@
       color: white;
       text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
       transition: transform 0.3s ease;
-      animation: pulse 1.8s infinite ease-in-out;
+      animation: pulseMove 1.8s infinite ease-in-out;
     }
 
-    @keyframes pulse {
+    @keyframes pulseMove {
       0%, 100% {
-        transform: scale(1);
+        transform: scale(1) translateY(0);
         box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
       }
       50% {
-        transform: scale(1.05);
+        transform: scale(1.05) translateY(-3px);
         box-shadow: 0 0 25px rgba(255, 255, 255, 0.8);
       }
     }
