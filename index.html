@@ -108,75 +108,16 @@
       font-size: 1.4rem;
       margin: 0;
     }
-    section {
-      padding: 30px 20px;
-      max-width: 1000px;
-      margin: auto;
-    }
-    h2 {
-      font-size: 28px;
-      margin-bottom: 20px;
-      text-align: center;
-    }
-    p, ul, li {
-      font-size: 1.1rem;
-      line-height: 1.6;
-      text-align: center;
-    }
-    ul {
-      list-style-position: inside;
-      padding-left: 10px;
-    }
-    .portfolio img {
-      width: 100%;
-      max-width: 800px;
-      border-radius: 12px;
-      margin: 20px auto;
-      display: block;
-    }
-    .buttons {
-      text-align: center;
-      margin: 40px 0;
-    }
-    .buttons a {
-      display: inline-block;
-      margin: 10px;
-      padding: 12px 24px;
-      text-decoration: none;
-      font-weight: bold;
-      border-radius: 8px;
-      color: white;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
-      animation: glowPulse 1.5s infinite ease-in-out;
-    }
-    @keyframes glowPulse {
-      0% { transform: scale(1); box-shadow: 0 0 8px rgba(255, 255, 255, 0.4); }
-      50% { transform: scale(1.07); box-shadow: 0 0 20px rgba(255, 255, 255, 0.9); }
-      100% { transform: scale(1); box-shadow: 0 0 8px rgba(255, 255, 255, 0.4); }
-    }
-    .buttons a:hover {
-      transform: scale(1.1);
-    }
-    .call { background-color: green; }
-    .vk { background-color: #0077ff; }
-    .tg { background-color: #229ED9; }
-    .yt { background-color: #ff0000; color: white; }
-    .consult { background-color: orange; }
-    .pdf {
-      margin-top: 20px;
-      text-align: center;
-    }
-    .pdf a {
-      color: #00ffff;
-      text-decoration: none;
-      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translate(-50%, 30px); }
+      to { opacity: 1; transform: translate(-50%, 0); }
     }
     footer {
       text-align: center;
-      padding: 15px;
-      font-size: 0.9rem;
-      color: #ccc;
+      padding: 20px;
+      font-size: 0.8rem;
+      color: #aaa;
+      background-color: #111;
     }
     @media (max-width: 768px) {
       header { height: 300px; }
@@ -185,6 +126,7 @@
       .header-content p { font-size: 1rem; }
       .logo img { height: 70px; }
       .phone { font-size: 0.9rem; top: 25px; right: 15px; }
+      footer { font-size: 0.75rem; }
     }
   </style>
 </head>
@@ -205,15 +147,12 @@
       <p>Современное строительство домов в стиле хай-тек и минимализм</p>
     </div>
   </header>
-</body>
-</html>
 
   <section>
     <h2>О нас</h2>
-    <p>Мы — строительная компания «Алмастрой» город Анапа.
-    С 2000 года проектируем и строим частные дома под ключ: от фундамента до отделки.
-    Специализируемся на современных стилях — хай-тек и минимализм, работаем официально, по договору.</p>
+    <p>Мы — строительная компания «Алмастрой» город Анапа. С 2000 года проектируем и строим частные дома под ключ: от фундамента до отделки. Специализируемся на современных стилях — хай-тек и минимализм, работаем официально, по договору.</p>
   </section>
+
   <section>
     <h2>Услуги</h2>
     <ul>
@@ -225,23 +164,24 @@
       <li>Строительство бассейнов</li>
     </ul>
   </section>
+
   <section class="portfolio">
-    <h2>Проект дома ALMA-HOUSE 200</h2>
+    <h2>Портфолио</h2>
     <img src="2.png" alt="Фасад дома" />
     <img src="3.png" alt="Лестница на крышу" />
     <img src="4.png" alt="Кровля дома" />
   </section>
+
   <section>
-    <h2>Строительство Hi-tech дома 235 м² по цене квартиры</h2>
-    <p>Компания «Алмастрой» предлагает построить дом в городе Анапа и Анапском районе.
-    Современные технологии, энергосбережение и дизайн будущего — уже сегодня.
-    Возможно строительство по вашему проекту.</p>
+    <h2>Уникальное предложение</h2>
+    <p>Строительство Hi-tech дома 235 м² по цене квартиры! Современные технологии, энергосбережение и стиль. Ваша мечта о доме — ближе, чем кажется.</p>
     <div class="pdf">
       📥 <a href="https://disk.yandex.ru/d/atXBGGPm1h6CLA" target="_blank">Скачать смету, проект дома (zip, 74 МБ)</a>
     </div>
   </section>
+
   <section>
-    <h2>Хотите больше информации? Подписывайтесь на нас:</h2>
+    <h2>Контакты</h2>
     <div class="buttons">
       <a href="tel:+79385365965" class="call">Позвонить</a>
       <a href="https://vk.com/almastroi" target="_blank" class="vk">ВКонтакте</a>
@@ -249,6 +189,8 @@
       <a href="https://www.youtube.com/watch?v=NYR8SUm5X5o&list=PLGdNtAnsv2V22LblaPxYEaRDWQRysQWCb&index=7" target="_blank" class="yt">YouTube</a>
     </div>
   </section>
+
+  <!-- Begin LeadBack code {literal} -->
   <script>
     var _emv = _emv || [];
     _emv['campaign'] = 'd9e76e452a5ee3a0c1c8c6aa';
@@ -258,6 +200,8 @@
       var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(em, s);
     })();
   </script>
+  <!-- End LeadBack code {/literal} -->
+
   <footer>
     © ООО «Алмастрой» 2000–2025
   </footer>
