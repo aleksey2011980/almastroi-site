@@ -3,17 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Алмастрой Анапа</title>
+  <title>Алмастрой luxury house</title>
   <link rel="icon" href="favicon.ico" type="image/x-icon">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
-
-  <!-- Open Graph для соцсетей -->
-  <meta property="og:title" content="Алмастрой Анапа — строительство luxury-house">
-  <meta property="og:description" content="Современные дома в Анапе. Проекты, сметы, реализация под ключ.">
-  <meta property="og:image" content="https://luxury-house.site/preview.png">
-  <meta property="og:url" content="https://luxury-house.site/">
-  <meta property="og:type" content="website">
-
   <style>
     html {
       scroll-behavior: smooth;
@@ -64,7 +56,7 @@
     }
 
     .logo img {
-      height: 90px;
+      height: 80px;
       width: auto;
     }
 
@@ -109,6 +101,18 @@
       padding: 30px 20px;
       max-width: 1000px;
       margin: auto;
+      animation: fadeInSection 1.2s ease-in-out both;
+    }
+
+    @keyframes fadeInSection {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     h2 {
@@ -136,6 +140,7 @@
       border-radius: 12px;
       margin: 20px auto;
       display: block;
+      animation: fadeInSection 1s ease both;
     }
 
     .buttons {
@@ -151,16 +156,24 @@
       font-weight: bold;
       border-radius: 8px;
       color: white;
-      background-color: #444;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
       text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
       animation: glowPulse 1.5s infinite ease-in-out;
     }
 
     @keyframes glowPulse {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.07); }
-      100% { transform: scale(1); }
+      0% {
+        transform: scale(1);
+        box-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
+      }
+      50% {
+        transform: scale(1.07);
+        box-shadow: 0 0 20px rgba(255, 255, 255, 0.9);
+      }
+      100% {
+        transform: scale(1);
+        box-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
+      }
     }
 
     .buttons a:hover {
@@ -184,14 +197,6 @@
       text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
     }
 
-    footer {
-      text-align: center;
-      padding: 20px;
-      font-size: 0.75rem;
-      color: #777;
-      background: #111;
-    }
-
     @media (max-width: 768px) {
       header {
         height: 300px;
@@ -212,11 +217,6 @@
 
       .logo img {
         height: 80px;
-      }
-
-      footer {
-        font-size: 0.7rem;
-        padding: 15px;
       }
     }
   </style>
@@ -264,10 +264,10 @@
   </section>
 
   <section>
-    <h2>Строительство Hi-tech дома 235 м² по цене  квартиры</h2>
-    <p>Компания «Алмастрой» предлагает готовый проект  дома в городе Анапа. Современные технологии, энергосбережение и дизайн будущего — уже сегодня. </p>
+    <h2>Уникальное предложение — строительство дома 235 м² по цене двухкомнатной квартиры</h2>
+    <p>Компания «Алмастрой» предлагает готовый проект современного дома в городе Анапа. Стильный фасад, продуманная планировка и минимальные сроки строительства.</p>
     <div class="pdf">
-      📥 <a href="https://disk.yandex.ru/d/atXBGGPm1h6CLA" target="_blank">Скачать смету, проект дома (.zip, 74 МБ)</a>
+      📥 <a href="https://disk.yandex.ru/d/EpUL3zqK__P_Og" target="_blank">Скачать смету, проект дома (.zip, 74 МБ)</a>
     </div>
   </section>
 
@@ -280,23 +280,6 @@
       <a href="https://www.youtube.com/watch?v=NYR8SUm5X5o&list=PLGdNtAnsv2V22LblaPxYEaRDWQRysQWCb&index=7" target="_blank" class="yt">YouTube</a>
     </div>
   </section>
-
-  <!-- Begin LeadBack code {literal} -->
-  <script>
-      var _emv = _emv || [];
-      _emv['campaign'] = 'd9e76e452a5ee3a0c1c8c6aa';
-
-      (function() {
-          var em = document.createElement('script'); em.type = 'text/javascript'; em.async = true;
-          em.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'leadback.ru/js/leadback.js';
-          var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(em, s);
-      })();
-  </script>
-  <!-- End LeadBack code {/literal} -->
-
-  <footer>
-    © ООО «Алмастрой» 2000–2025
-  </footer>
 
 </body>
 </html>
