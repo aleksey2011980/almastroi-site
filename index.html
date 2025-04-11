@@ -7,7 +7,7 @@
   <link rel="icon" href="favicon.ico" type="image/x-icon">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
 
-  <!-- Open Graph для предпросмотра в соцсетях -->
+  <!-- Open Graph для соцсетей -->
   <meta property="og:title" content="Алмастрой Анапа — строительство luxury-house">
   <meta property="og:description" content="Современные дома в Анапе. Проекты, сметы, реализация под ключ.">
   <meta property="og:image" content="https://luxury-house.site/preview.png">
@@ -157,18 +157,9 @@
     }
 
     @keyframes glowPulse {
-      0% {
-        transform: scale(1);
-        box-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
-      }
-      50% {
-        transform: scale(1.07);
-        box-shadow: 0 0 20px rgba(255, 255, 255, 0.9);
-      }
-      100% {
-        transform: scale(1);
-        box-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
-      }
+      0% { transform: scale(1); box-shadow: 0 0 8px rgba(255,255,255,0.4); }
+      50% { transform: scale(1.07); box-shadow: 0 0 20px rgba(255,255,255,0.9); }
+      100% { transform: scale(1); box-shadow: 0 0 8px rgba(255,255,255,0.4); }
     }
 
     .buttons a:hover {
@@ -192,6 +183,14 @@
       text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
     }
 
+    footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 0.75rem;
+      color: #aaa;
+      background: #111;
+    }
+
     @media (max-width: 768px) {
       header {
         height: 300px;
@@ -212,6 +211,11 @@
 
       .logo img {
         height: 80px;
+      }
+
+      footer {
+        font-size: 0.7rem;
+        padding: 15px;
       }
     }
   </style>
@@ -267,7 +271,7 @@
   </section>
 
   <section>
-    <h2>Соцсети</h2>
+    <h2>Связаться с нами</h2>
     <div class="buttons">
       <a href="tel:+79385365965" class="call">Позвонить</a>
       <a href="https://vk.com/almastroi" target="_blank" class="vk">ВКонтакте</a>
@@ -275,20 +279,23 @@
       <a href="https://www.youtube.com/watch?v=NYR8SUm5X5o&list=PLGdNtAnsv2V22LblaPxYEaRDWQRysQWCb&index=7" target="_blank" class="yt">YouTube</a>
     </div>
   </section>
- <!-- Begin LeadBack code {literal} -->
-<script>
-    var _emv = _emv || [];
-    _emv['campaign'] = 'd9e76e452a5ee3a0c1c8c6aa';
 
-    (function() {
-        var em = document.createElement('script'); em.type = 'text/javascript'; em.async = true;
-        em.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'leadback.ru/js/leadback.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(em, s);
-    })();
-</script>
-<!-- End LeadBack code {/literal} -->
-   <footer>
+  <!-- Begin LeadBack code {literal} -->
+  <script>
+      var _emv = _emv || [];
+      _emv['campaign'] = 'd9e76e452a5ee3a0c1c8c6aa';
+
+      (function() {
+          var em = document.createElement('script'); em.type = 'text/javascript'; em.async = true;
+          em.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'leadback.ru/js/leadback.js';
+          var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(em, s);
+      })();
+  </script>
+  <!-- End LeadBack code {/literal} -->
+
+  <footer>
    ООО «Алмастрой» , © 2000–2025
-  </footer>                   
+  </footer>
+
 </body>
 </html>
