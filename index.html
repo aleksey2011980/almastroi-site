@@ -156,21 +156,21 @@
       animation: glowPulse 1.5s infinite ease-in-out;
     }
 
+    .buttons a.call { background-color: green; box-shadow: 0 0 12px green; }
+    .buttons a.vk { background-color: #0077ff; box-shadow: 0 0 12px #0077ff; }
+    .buttons a.tg { background-color: #229ED9; box-shadow: 0 0 12px #229ED9; }
+    .buttons a.yt { background-color: #ff0000; color: white; box-shadow: 0 0 12px #ff0000; }
+    .buttons a.consult { background-color: orange; box-shadow: 0 0 12px orange; }
+
     @keyframes glowPulse {
-      0% { transform: scale(1); box-shadow: 0 0 8px rgba(255,255,255,0.4); }
-      50% { transform: scale(1.07); box-shadow: 0 0 20px rgba(255,255,255,0.9); }
-      100% { transform: scale(1); box-shadow: 0 0 8px rgba(255,255,255,0.4); }
+      0% { transform: scale(1); }
+      50% { transform: scale(1.07); }
+      100% { transform: scale(1); }
     }
 
     .buttons a:hover {
       transform: scale(1.1);
     }
-
-    .call { background-color: green; }
-    .vk { background-color: #0077ff; }
-    .tg { background-color: #229ED9; }
-    .yt { background-color: #ff0000; color: white; }
-    .consult { background-color: orange; }
 
     .pdf {
       margin-top: 20px;
