@@ -151,10 +151,24 @@
       font-weight: bold;
       border-radius: 8px;
       color: white;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
       text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
-      animation: glowPulse 1.5s infinite ease-in-out;
-      box-shadow: 0 0 12px white;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .buttons a.call:hover {
+      box-shadow: 0 0 25px white;
+    }
+    .buttons a.vk:hover {
+      box-shadow: 0 0 25px white;
+    }
+    .buttons a.tg:hover {
+      box-shadow: 0 0 25px white;
+    }
+    .buttons a.yt:hover {
+      box-shadow: 0 0 25px white;
+    }
+    .buttons a.consult:hover {
+      box-shadow: 0 0 25px white;
     }
 
     .call { background-color: green; }
@@ -162,16 +176,6 @@
     .tg { background-color: #229ED9; }
     .yt { background-color: #ff0000; color: white; }
     .consult { background-color: orange; }
-
-    @keyframes glowPulse {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.07); }
-      100% { transform: scale(1); }
-    }
-
-    .buttons a:hover {
-      transform: scale(1.1);
-    }
 
     .pdf {
       margin-top: 20px;
@@ -222,9 +226,6 @@
   </style>
 </head>
 <body>
-<!-- остальная часть сайта без изменений -->
-
-
  <header>
     <video autoplay muted loop playsinline>
       <source src="header-video.mp4" type="video/mp4">
