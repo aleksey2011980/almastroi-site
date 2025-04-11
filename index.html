@@ -152,30 +152,26 @@
       border-radius: 8px;
       color: white;
       text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      transition: transform 0.3s ease;
+      animation: pulse 1.8s infinite ease-in-out;
     }
 
-    .buttons a.call:hover {
-      box-shadow: 0 0 25px white;
-    }
-    .buttons a.vk:hover {
-      box-shadow: 0 0 25px white;
-    }
-    .buttons a.tg:hover {
-      box-shadow: 0 0 25px white;
-    }
-    .buttons a.yt:hover {
-      box-shadow: 0 0 25px white;
-    }
-    .buttons a.consult:hover {
-      box-shadow: 0 0 25px white;
+    @keyframes pulse {
+      0%, 100% {
+        transform: scale(1);
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+      }
+      50% {
+        transform: scale(1.05);
+        box-shadow: 0 0 25px rgba(255, 255, 255, 0.8);
+      }
     }
 
-    .call { background-color: green; }
-    .vk { background-color: #0077ff; }
-    .tg { background-color: #229ED9; }
-    .yt { background-color: #ff0000; color: white; }
-    .consult { background-color: orange; }
+    .buttons a.call { background-color: green; }
+    .buttons a.vk { background-color: #0077ff; }
+    .buttons a.tg { background-color: #229ED9; }
+    .buttons a.yt { background-color: #ff0000; color: white; }
+    .buttons a.consult { background-color: orange; }
 
     .pdf {
       margin-top: 20px;
