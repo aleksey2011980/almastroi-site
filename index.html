@@ -7,9 +7,12 @@
   <link rel="icon" href="favicon.ico" type="image/x-icon">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
 
-  <!-- SEO и Open Graph -->
+  <!-- SEO мета-теги -->
   <meta name="description" content="Алмастрой — строительство современных домов под ключ в Анапе. Хайтек, минимализм, проекты, сметы, гарантия.">
-  <meta name="keywords" content="строительство домов Анапа, Алмастрой, хайтек, дома под ключ, современный дом Анапа">
+  <meta name="keywords" content="строительство домов Анапа, Алмастрой, хайтек, дома под ключ, современный дом Анапа, строительство в Анапе, частный дом Анапа, подрядчик Анапа, проект дома Анапа">
+  <meta name="robots" content="index, follow">
+
+  <!-- Open Graph для соцсетей -->
   <meta property="og:title" content="Алмастрой Анапа — строительство luxury-house">
   <meta property="og:description" content="Современные дома в Анапе. Проекты, сметы, реализация под ключ.">
   <meta property="og:image" content="https://luxury-house.site/preview.png">
@@ -17,6 +20,10 @@
   <meta property="og:type" content="website">
 
   <style>
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       margin: 0;
       font-family: 'Montserrat', sans-serif;
@@ -30,6 +37,7 @@
       width: 100%;
       height: 100vh;
       overflow: hidden;
+      margin-bottom: 20px;
     }
 
     header video {
@@ -65,21 +73,6 @@
       width: auto;
     }
 
-    .phone {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      z-index: 3;
-      color: white;
-      font-size: 1rem;
-    }
-
-    .phone a {
-      color: white;
-      text-decoration: none;
-      font-weight: 600;
-    }
-
     .header-content {
       position: absolute;
       bottom: 40px;
@@ -90,99 +83,232 @@
       z-index: 2;
       width: 100%;
       padding: 0 20px;
+      opacity: 0;
+      animation: fadeIn 2s ease forwards;
+      box-sizing: border-box;
+    }
+
+    .header-content h1 {
+      font-size: 2.8rem;
+      font-weight: 600;
+      margin: 0 0 10px;
+    }
+
+    .header-content p {
+      font-size: 1.4rem;
+      margin: 0;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translate(-50%, 30px);
+      }
+      to {
+        opacity: 1;
+        transform: translate(-50%, 0);
+      }
+    }
+
+    section {
+      padding: 30px 20px;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    h2 {
+      font-size: 28px;
+      margin-bottom: 20px;
+      text-align: center;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
+    }
+
+    section:last-of-type h2 {
+      font-size: 18px;
+    }
+
+    p, ul, li {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      text-align: center;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
+    }
+
+    ul {
+      list-style-position: inside;
+      padding-left: 10px;
+    }
+
+    .portfolio img {
+      width: 100%;
+      max-width: 800px;
+      border-radius: 12px;
+      margin: 20px auto;
+      display: block;
+    }
+
+    .buttons {
+      text-align: center;
+      margin: 40px 0;
+    }
+
+    .buttons a {
+      display: inline-block;
+      margin: 10px;
+      padding: 12px 24px;
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 8px;
+      color: white;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
+      transition: transform 0.3s ease;
+      animation: pulseMove 1.8s infinite ease-in-out;
+    }
+
+    @keyframes pulseMove {
+      0%, 100% {
+        transform: scale(1) translateY(0);
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+      }
+      50% {
+        transform: scale(1.05) translateY(-3px);
+        box-shadow: 0 0 25px rgba(255, 255, 255, 0.8);
+      }
+    }
+
+    .buttons a.call { background-color: green; }
+    .buttons a.vk { background-color: #0077ff; }
+    .buttons a.tg { background-color: #229ED9; }
+    .buttons a.yt { background-color: #ff0000; color: white; }
+    .buttons a.consult { background-color: orange; }
+
+    .pdf {
+      margin-top: 20px;
+      text-align: center;
+    }
+
+    .pdf a {
+      color: #00ffff;
+      text-decoration: none;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 0.75rem;
+      color: #777;
+      background: #111;
     }
 
     @media (max-width: 768px) {
-      .logo img {
-        height: 70px;
+      header {
+        height: 300px;
       }
 
-      .phone {
-        font-size: 0.9rem;
-        top: 15px;
-        right: 15px;
+      .header-content {
+        bottom: 15px;
+        padding: 0 15px;
+      }
+
+      .header-content h1 {
+        font-size: 1.5rem;
+      }
+
+      .header-content p {
+        font-size: 0.95rem;
+      }
+
+      .logo img {
+        height: 80px;
+      }
+
+      footer {
+        font-size: 0.7rem;
+        padding: 15px;
       }
     }
   </style>
 </head>
 <body>
+ <header>
+    <video autoplay muted loop playsinline>
+      <source src="header-video.mp4" type="video/mp4">
+      Ваш браузер не поддерживает видео.
+    </video>
 
-<header>
-  <video autoplay muted loop playsinline>
-    <source src="header-video.mp4" type="video/mp4">
-    Ваш браузер не поддерживает видео.
-  </video>
+    
 
-  <div class="logo">
-    <img src="1.png" alt="Логотип Алмастрой">
-  </div>
+    <div class="phone" style="position: absolute; top: 20px; right: 20px; z-index: 3; font-size: 1rem;">
+      <a href="tel:+79385365965" style="color: white; text-decoration: none; font-weight: 600;">☎️ +7 938 536 59 65</a>
+    </div>
 
-  <div class="phone">
-    <a href="tel:+79385365965">☎️ +7 938 536 59 65</a>
-  </div>
+    <div class="header-content">
+      <h1>ООО АЛМАСТРОЙ</h1>
+      <p>Современное строительство домов в стиле хай-тек и минимализм</p>
+    </div>
+  </header>
 
-  <div class="header-content">
-    <h1>ООО АЛМАСТРОЙ</h1>
-    <p>Современное строительство домов в стиле хай-тек и минимализм</p>
-  </div>
-</header>
+  <section>
+    <h2>О нас</h2>
+    <p>Мы — строительная компания «Алмастрой» город Анапа.  
+    С 2000 года проектируем и строим частные дома под ключ: от фундамента до отделки.  
+    Специализируемся на современных стилях — хай-тек и минимализм, работаем официально, по договору.</p>
+  </section>
 
-<section>
-  <h2>О нас</h2>
-  <p>Мы — строительная компания «Алмастрой» в Анапе. Работаем с 2000 года, строим под ключ в стиле хай-тек и минимализм.</p>
-</section>
+  <section>
+    <h2>Услуги</h2>
+    <ul>
+      <li>Проектирование и строительство домов под ключ</li>
+      <li>Фундаменты, коробки, фасады, кровля</li>
+      <li>Инженерные сети и внутренняя отделка</li>
+      <li>Благоустройство и ландшафтные работы</li>
+       <li>Подбор участка ( бесплатно )</li>
+       <li>Строительство бассейнов</li>
+    </ul>
+  </section>
 
-<section>
-  <h2>Услуги</h2>
-  <ul>
-    <li>Проектирование и строительство</li>
-    <li>Фундаменты, фасады, кровля</li>
-    <li>Инженерные сети и отделка</li>
-    <li>Благоустройство участка</li>
-    <li>Подбор участка бесплатно</li>
-    <li>Бассейны под ключ</li>
-  </ul>
-</section>
+  <section class="portfolio">
+    <h2>Проект дома ALMA-HOUSE 200</h2>
+    <img src="2.png" alt="Фасад дома" />
+    <img src="3.png" alt="Лестница на крышу" />
+    <img src="4.png" alt="Кровля дома" />
+  </section>
 
-<section class="portfolio">
-  <h2>Проект дома ALMA-HOUSE 200</h2>
-  <img src="2.png" alt="Фасад дома" />
-  <img src="3.png" alt="Лестница на крышу" />
-  <img src="4.png" alt="Кровля дома" />
-</section>
+  <section>
+    <h2>Строительство Hi-tech дома 235 м² по цене  квартиры</h2>
+    <p>Компания «Алмастрой» предлагает построить  дом в городе Анапа и Анапском районе. Современные технологии, энергосбережение и дизайн будущего — уже сегодня. Возможно строительство по вашему проекту.</p>
+    <div class="pdf">
+      📥 <a href="https://disk.yandex.ru/d/atXBGGPm1h6CLA" target="_blank">Скачать смету, проект дома (zip, 74 МБ)</a>
+    </div>
+  </section>
 
-<section>
-  <h2>Hi-tech дом 235 м² по цене квартиры</h2>
-  <p>Современные технологии и энергосбережение. Возможность строительства по вашему проекту.</p>
-  <div class="pdf">
-    📅 <a href="https://disk.yandex.ru/d/atXBGGPm1h6CLA" target="_blank">Скачать смету и проект</a>
-  </div>
-</section>
+  <section>
+    <h2 style="font-size: 18px;">Хотите больше информации? Подписывайтесь на нас:</h2>
+    <div class="buttons">
+      <a href="tel:+79385365965" class="call">Позвонить</a>
+      <a href="https://vk.com/almastroi" target="_blank" class="vk">ВКонтакте</a>
+      <a href="https://t.me/almastroi" target="_blank" class="tg">Telegram</a>
+      <a href="https://www.youtube.com/watch?v=NYR8SUm5X5o&list=PLGdNtAnsv2V22LblaPxYEaRDWQRysQWCb&index=7" target="_blank" class="yt">YouTube</a>
+    </div>
+  </section>
 
-<section>
-  <h2 style="font-size: 18px;">Подписывайтесь на нас:</h2>
-  <div class="buttons">
-    <a href="tel:+79385365965" class="call">Позвонить</a>
-    <a href="https://vk.com/almastroi" class="vk">ВКонтакте</a>
-    <a href="https://t.me/almastroi" class="tg">Telegram</a>
-    <a href="https://www.youtube.com/watch?v=NYR8SUm5X5o" class="yt">YouTube</a>
-  </div>
-</section>
+  <!-- Begin LeadBack code {literal} -->
+  <script>
+      var _emv = _emv || [];
+      _emv['campaign'] = 'd9e76e452a5ee3a0c1c8c6aa';
 
-<footer>
-  © ООО «Алмастрой» 2000–2025
-</footer>
+      (function() {
+          var em = document.createElement('script'); em.type = 'text/javascript'; em.async = true;
+          em.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'leadback.ru/js/leadback.js';
+          var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(em, s);
+      })();
+  </script>
+  <!-- End LeadBack code {/literal} -->
 
-<!-- LeadBack скрипт -->
-<script>
-  var _emv = _emv || [];
-  _emv['campaign'] = 'd9e76e452a5ee3a0c1c8c6aa';
-  (function() {
-    var em = document.createElement('script'); em.type = 'text/javascript'; em.async = true;
-    em.src = (document.location.protocol === 'https:' ? 'https://' : 'http://') + 'leadback.ru/js/leadback.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(em, s);
-  })();
-</script>
+  <footer>
+    © ООО «Алмастрой» 2000–2025
+  </footer>
 
 </body>
 </html>
