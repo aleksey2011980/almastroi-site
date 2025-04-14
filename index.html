@@ -312,48 +312,6 @@
     status.textContent = "❌ Не удалось отправить. Проверьте подключение.";
   }
 }
-📞 Телефон: ${phone}`;
-
-  try {
-    const response = await fetch(`${proxyUrl}?chat_id=81302621&message=${encodeURIComponent(message)}`);
-    if (response.ok) {
-      status.innerHTML = "<span style='color: green; animation: bounce 0.5s ease;'>✅ Заявка отправлена! Загружаем файл...</span>";
-      setTimeout(() => {
-        window.location.href = "https://disk.yandex.ru/d/atXBGGPm1h6CLA";
-        closeForm();
-      }, 1500);
-    } else {
-      status.textContent = "❌ Ошибка при отправке. Попробуйте позже.";
-    }
-  } catch (error) {
-    status.textContent = "❌ Не удалось отправить. Проверьте подключение.";
-  }
-}
-📞 Телефон: ${phone}`;
-
-  const status = document.getElementById("formStatus");
-  status.textContent = "⏳ Отправка...";
-
-  try {
-    const response = await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
-      method: "POST",
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ chat_id: chatId, text: message })
-    });
-
-    if (response.ok) {
-      status.innerHTML = "<span style='color: green; animation: bounce 0.5s ease;'>✅ Заявка отправлена! Загружаем файл...</span>";
-      setTimeout(() => {
-        window.location.href = "https://disk.yandex.ru/d/atXBGGPm1h6CLA";
-        closeForm();
-      }, 1500);
-    } else {
-      status.textContent = "❌ Ошибка при отправке. Попробуйте позже.";
-    }
-  } catch (error) {
-    status.textContent = "❌ Не удалось отправить. Проверьте подключение.";
-  }
-}
 </script>
   <!-- Begin LeadBack code {literal} -->
   <script>
