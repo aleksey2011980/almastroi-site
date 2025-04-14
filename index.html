@@ -298,7 +298,10 @@
 📞 Телефон: ${phone}`;
 
   try {
-    const response = await fetch(`${proxyUrl}?chat_id=81302621&message=${encodeURIComponent(message)}`);
+    const response = await fetch(`${proxyUrl}?chat_id=81302621&message=${encodeURIComponent(message)}`, {
+      method: 'GET',
+      mode: 'no-cors'
+    });
     if (response.ok) {
       status.innerHTML = "<span style='color: green; animation: bounce 0.5s ease;'>✅ Заявка отправлена! Загружаем файл...</span>";
       setTimeout(() => {
