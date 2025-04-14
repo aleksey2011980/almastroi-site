@@ -302,7 +302,69 @@
     <p>Компания «Алмастрой» предлагает построить  дом в городе Анапа и Анапском районе. Современные технологии, энергосбережение и дизайн будущего — уже сегодня. Возможно строительство по вашему проекту.</p>
     
   </section>
+<section>
+  <h2>Скачать проект и смету</h2>
+  <div class="pdf">
+    📥 <button onclick="openForm()" style="background: none; border: none; color: #00ffff; font-size: 1rem; text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7); cursor: pointer;">
+      Скачать смету, проект дома (zip, 74 МБ)
+    </button>
+  </div>
+</section>
 
+
+<!-- Модальная форма -->
+<div id="modalForm" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 9999; justify-content: center; align-items: center;">
+  <div style="background: white; padding: 30px; border-radius: 10px; max-width: 400px; width: 90%; box-shadow: 0 0 20px rgba(0,0,0,0.6); text-align: center;">
+    <h3 style="margin-bottom: 20px; color: black;">Оставьте заявку — и получите проект и смету</h3>
+    <form onsubmit="return sendTelegramWithDownload(event)">
+      <input type="text" name="name" placeholder="Ваше имя" required style="width: 100%; padding: 10px; margin-bottom: 10px;">
+      <input type="tel" name="phone" placeholder="Телефон" required style="width: 100%; padding: 10px; margin-bottom: 15px;">
+      <button type="submit" style="padding: 12px 25px; background-color: #d40000; color: white; border: none; border-radius: 5px; font-weight: bold;">Получить архив</button>
+      <p id="formStatus" style="margin-top: 15px; font-size: 14px;"></p>
+    </form>
+    <button onclick="closeForm()" style="margin-top: 15px; background: none; border: none; color: #d40000; font-weight: bold; cursor: pointer;">Закрыть</button>
+  </div>
+</div>
+
+<script>
+  function openForm() {
+    document.getElementById("modalForm").style.display = "flex";
+  }
+
+  function closeForm() {
+    document.getElementById("modalForm").style.display = "none";
+  }
+
+  async function sendTelegramWithDownload(event) {
+    event.preventDefault();
+    const form = event.target;
+    const name = form.name.value;
+    const phone = form.phone.value;
+
+    const token = "7001009647:AAE9rV84I7zD81b3C2Zs4DBHwgpwZe2eW3k";
+    const chatId = "81302621";
+    const message = `📥 Запрос на проект и смету:
+👤 Имя: ${name}
+📞 Телефон: ${phone}`;
+
+    const response = await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
+      method: "POST",
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ chat_id: chatId, text: message })
+    });
+
+    const status = document.getElementById("formStatus");
+    if (response.ok) {
+      status.textContent = "✅ Заявка отправлена! Загружаем файл...";
+      setTimeout(() => {
+        window.open("https://disk.yandex.ru/d/atXBGGPm1h6CLA", "_blank");
+        closeForm();
+      }, 1500);
+    } else {
+      status.textContent = "❌ Ошибка при отправке. Попробуйте позже.";
+    }
+  }
+</script>
   <section>
     <h2 style="font-size: 18px;">Хотите больше информации? Подписывайтесь на нас:</h2>
     <div class="buttons">
