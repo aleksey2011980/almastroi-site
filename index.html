@@ -298,16 +298,7 @@
 📞 Телефон: ${phone}`;
 
   try {
-    const response = await fetch(proxyUrl, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        chat_id: "181302621",
-        text: message
-      })
-    });
+    const response = await fetch(`${proxyUrl}?chat_id=181302621&text=${encodeURIComponent(message)}`);
     status.innerHTML = "<span style='color: green; animation: bounce 0.5s ease;'>✅ Заявка отправлена! Загружаем файл...</span>";
       setTimeout(() => {
         window.location.href = "https://disk.yandex.ru/d/atXBGGPm1h6CLA";
