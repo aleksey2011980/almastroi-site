@@ -1,37 +1,29 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Алмастрой Анапа</title>
-  <link rel="icon" href="favicon.ico" type="image/x-icon">
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
-
-  <!-- SEO мета-теги -->
+  <!-- SEO и Open Graph -->
   <meta name="description" content="Алмастрой — строительство современных домов под ключ в Анапе. Хайтек, минимализм, проекты, сметы, гарантия.">
   <meta name="keywords" content="строительство домов Анапа, Алмастрой, хайтек, дома под ключ, современный дом Анапа, строительство в Анапе, частный дом Анапа, подрядчик Анапа, проект дома Анапа">
   <meta name="robots" content="index, follow">
-
-  <!-- Open Graph для соцсетей -->
   <meta property="og:title" content="Алмастрой Анапа — строительство luxury-house">
   <meta property="og:description" content="Современные дома в Анапе. Проекты, сметы, реализация под ключ.">
   <meta property="og:image" content="https://luxury-house.site/preview.png">
   <meta property="og:url" content="https://luxury-house.site/">
   <meta property="og:type" content="website">
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Алмастрой Анапа</title>
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
   <style>
-    html {
-      scroll-behavior: smooth;
-    }
-
+    html { scroll-behavior: smooth; }
     body {
       margin: 0;
       font-family: 'Montserrat', sans-serif;
       background-color: #000;
       color: #fff;
-      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
+      text-shadow: 0 3px 8px rgba(0, 0, 0, 0.9);
     }
-
     header {
       position: relative;
       width: 100%;
@@ -39,120 +31,75 @@
       overflow: hidden;
       margin-bottom: 20px;
     }
-
     header video {
       position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
       object-fit: cover;
       z-index: -2;
     }
-
     header::after {
       content: "";
       position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
       background: rgba(0, 0, 0, 0.35);
       z-index: -1;
     }
-
     .logo {
-      position: absolute;
-      top: 10px;
-      left: 10px;
-      z-index: 3;
+      position: absolute; top: 0; left: 10px; z-index: 3;
     }
-
     .logo img {
-      height: 90px;
-      width: auto;
+      height: 90px; width: auto;
     }
-
     .phone {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      z-index: 3;
+      position: absolute; top: 20px; right: 20px; z-index: 3;
       font-size: 1rem;
     }
-
     .phone a {
-      color: white;
-      text-decoration: none;
-      font-weight: 600;
+      color: white; text-decoration: none;
+      font-weight: 600; display: flex; align-items: center; gap: 6px;
     }
-
     .header-content {
       position: absolute;
-      bottom: 40px;
-      left: 50%;
+      bottom: 40px; left: 50%;
       transform: translateX(-50%);
       text-align: center;
-      color: white;
       z-index: 2;
       width: 100%;
       padding: 0 20px;
       opacity: 0;
       animation: fadeIn 2s ease forwards;
-      box-sizing: border-box;
     }
-
     .header-content h1 {
-      font-size: 2.8rem;
-      font-weight: 600;
-      margin: 0 0 10px;
+      font-size: 2.8rem; font-weight: 600; margin: 0 0 10px;
     }
-
     .header-content p {
-      font-size: 1.4rem;
-      margin: 0;
+      font-size: 0.95rem; margin: 0;
     }
-
     @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translate(-50%, 30px);
-      }
-      to {
-        opacity: 1;
-        transform: translate(-50%, 0);
-      }
+      from { opacity: 0; transform: translate(-50%, 30px); }
+      to { opacity: 1; transform: translate(-50%, 0); }
     }
-
     section {
       padding: 30px 20px;
       max-width: 1000px;
       margin: auto;
     }
-
     h2 {
       font-size: 28px;
       margin-bottom: 20px;
       text-align: center;
-      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
     }
-
-    section:last-of-type h2 {
-      font-size: 18px;
-    }
-
     p, ul, li {
-      font-size: 1.1rem;
+      font-size: 0.95rem;
       line-height: 1.6;
       text-align: center;
-      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
     }
-
     ul {
       list-style-position: inside;
       padding-left: 10px;
     }
-
     .portfolio img {
       width: 100%;
       max-width: 800px;
@@ -160,12 +107,10 @@
       margin: 20px auto;
       display: block;
     }
-
     .buttons {
       text-align: center;
       margin: 40px 0;
     }
-
     .buttons a {
       display: inline-block;
       margin: 10px;
@@ -174,39 +119,33 @@
       font-weight: bold;
       border-radius: 8px;
       color: white;
-      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
       transition: transform 0.3s ease;
       animation: pulseMove 1.8s infinite ease-in-out;
     }
-
     @keyframes pulseMove {
-      0%, 100% {
-        transform: scale(1) translateY(0);
-        box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
-      }
-      50% {
-        transform: scale(1.05) translateY(-3px);
-        box-shadow: 0 0 25px rgba(255, 255, 255, 0.8);
-      }
+      0%, 100% { transform: scale(1) translateY(0); }
+      50% { transform: scale(1.05) translateY(-3px); }
     }
-
     .buttons a.call { background-color: green; }
     .buttons a.vk { background-color: #0077ff; }
     .buttons a.tg { background-color: #229ED9; }
     .buttons a.yt { background-color: #ff0000; color: white; }
-    .buttons a.consult { background-color: orange; }
-
     .pdf {
       margin-top: 20px;
       text-align: center;
     }
-
-    .pdf a {
+    .pdf button {
+      background: none;
+      border: none;
       color: #00ffff;
-      text-decoration: none;
+      font-size: 1rem;
       text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
+      cursor: pointer;
     }
-
+    #formStatus {
+      color: black;
+      font-weight: bold;
+    }
     footer {
       text-align: center;
       padding: 20px;
@@ -214,35 +153,26 @@
       color: #777;
       background: #111;
     }
-
     @media (max-width: 768px) {
-      header {
-        height: 300px;
-      }
-
-      .header-content {
-        bottom: 15px;
-        padding: 0 15px;
-      }
-
-      .header-content h1 {
-        font-size: 1.5rem;
-      }
-
-      .header-content p {
-        font-size: 0.95rem;
-      }
-
-      .logo img {
-        height: 80px;
-      }
-
-      footer {
-        font-size: 0.7rem;
-        padding: 15px;
-      }
+      header { height: 300px; }
+      .header-content { bottom: 15px; padding: 0 15px; }
+      .header-content h1 { font-size: 1.5rem; }
+      .header-content p { font-size: 0.95rem; }
+      .logo img { height: 80px; }
+      footer { font-size: 0.7rem; padding: 15px; }
     }
-  </style>
+      .highlight-section {
+      background-color: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      padding: 20px;
+      margin-top: 30px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+    .buttons a {
+      box-shadow: 0 0 25px rgba(255, 255, 255, 0.5);
+    }
+    </style>
 </head>
 <body>
   <header>
@@ -250,59 +180,64 @@
       <source src="header-video.mp4" type="video/mp4">
       Ваш браузер не поддерживает видео.
     </video>
-
     <div class="logo">
       <img src="1.png" alt="Логотип Алмастрой">
     </div>
-
     <div class="phone">
-  <a href="tel:+79385365965" style="color: white; text-decoration: none; font-weight: 600; display: flex; align-items: center; gap: 6px;">
-    <svg xmlns="http://www.w3.org/2000/svg" fill="white" width="16" height="16" viewBox="0 0 24 24">
-      <path d="M6.62 10.79a15.093 15.093 0 006.59 6.59l2.2-2.2a1 1 0 011.11-.21c1.21.49 2.53.76 3.88.76a1 1 0 011 1v3.5a1 1 0 01-1 1A17 17 0 013 5a1 1 0 011-1h3.5a1 1 0 011 1c0 1.35.27 2.67.76 3.88a1 1 0 01-.21 1.11l-2.2 2.2z"/>
-    </svg>
-    +7 938 536 59 65
-  </a>
-</div>
-
-
+      <a href="tel:+79385365965">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="white" width="16" height="16" viewBox="0 0 24 24">
+          <path d="M6.62 10.79a15.093 15.093 0 006.59 6.59l2.2-2.2a1 1 0 011.11-.21c1.21.49 2.53.76 3.88.76a1 1 0 011 1v3.5a1 1 0 01-1 1A17 17 0 013 5a1 1 0 011-1h3.5a1 1 0 011 1c0 1.35.27 2.67.76 3.88a1 1 0 01-.21 1.11l-2.2 2.2z"/>
+        </svg>
+        +7 938 536 59 65
+      </a>
+    </div>
     <div class="header-content">
       <h1>ООО АЛМАСТРОЙ</h1>
       <p>Современное строительство домов в стиле хай-тек и минимализм</p>
     </div>
   </header>
+  <!-- Весь основной HTML здесь, включая модальное окно, формы, секции и скрипты -->
+<section class="highlight-section">
+  <h2>О нас</h2>
+  <p>Мы — строительная компания «Алмастрой» город Анапа. С 2000 года проектируем и строим частные дома под ключ: от фундамента до отделки. Специализируемся на современных стилях — хай-тек и минимализм, работаем официально, по договору.</p>
+</section>
 
-  <section>
-    <h2>О нас</h2>
-    <p>Мы — строительная компания «Алмастрой» город Анапа.  
-    С 2000 года проектируем и строим частные дома под ключ: от фундамента до отделки.  
-    Специализируемся на современных стилях — хай-тек и минимализм, работаем официально, по договору.</p>
-  </section>
+<section class="highlight-section">
+  <h2>Услуги</h2>
+  <ul>
+    <li>Проектирование и строительство домов под ключ</li>
+    <li>Фундаменты, коробки, фасады, кровля</li>
+    <li>Инженерные сети и внутренняя отделка</li>
+    <li>Благоустройство и ландшафтные работы</li>
+    <li>Подбор участка (бесплатно)</li>
+    <li>Строительство бассейнов</li>
+  </ul>
+</section>
 
-  <section>
-    <h2>Услуги</h2>
-    <ul>
-      <li>Проектирование и строительство домов под ключ</li>
-      <li>Фундаменты, коробки, фасады, кровля</li>
-      <li>Инженерные сети и внутренняя отделка</li>
-      <li>Благоустройство и ландшафтные работы</li>
-       <li>Подбор участка ( бесплатно )</li>
-       <li>Строительство бассейнов</li>
-    </ul>
-  </section>
+<section class="portfolio highlight-section">
+  <h2>Проект дома ALMA-HOUSE 200</h2>
+  <img src="2.png" alt="Фасад дома" />
+  <img src="3.png" alt="Лестница на крышу" />
+  <img src="4.png" alt="Кровля дома" />
+</section>
 
-  <section class="portfolio">
-    <h2>Проект дома ALMA-HOUSE 200</h2>
-    <img src="2.png" alt="Фасад дома" />
-    <img src="3.png" alt="Лестница на крышу" />
-    <img src="4.png" alt="Кровля дома" />
-  </section>
+<section class="highlight-section">
+  <h2>Строительство Hi-tech дома 235 м² по цене квартиры</h2>
+  <p>Компания «Алмастрой» предлагает построить дом в городе Анапа и Анапском районе. Современные технологии, энергосбережение и дизайн будущего — уже сегодня. Возможно строительство по вашему проекту.</p>
+</section>
 
-  <section>
-    <h2>Строительство Hi-tech дома 235 м² по цене  квартиры</h2>
-    <p>Компания «Алмастрой» предлагает построить  дом в городе Анапа и Анапском районе. Современные технологии, энергосбережение и дизайн будущего — уже сегодня. Возможно строительство по вашему проекту.</p>
-    
-  </section>
-<section>
+<section class="highlight-section">
+  <h2 style="font-size: 18px;">Хотите больше информации? Подписывайтесь на нас:</h2>
+  <div class="buttons">
+    <a href="tel:+79385365965" class="call">Позвонить</a>
+    <a href="https://vk.com/almastroi" target="_blank" class="vk">ВКонтакте</a>
+    <a href="https://t.me/almastroi" target="_blank" class="tg">Telegram</a>
+    <a href="https://www.youtube.com/watch?v=NYR8SUm5X5o" target="_blank" class="yt">YouTube</a>
+  </div>
+</section>
+
+
+<section class="highlight-section">
   <h2>Скачать проект и смету</h2>
   <div class="pdf">
     📥 <button onclick="openForm()" style="background: none; border: none; color: #00ffff; font-size: 1rem; text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7); cursor: pointer;">
@@ -311,6 +246,9 @@
   </div>
 </section>
 
+<footer>
+  © ООО «Алмастрой» 2000–2025
+</footer>
 
 <!-- Модальная форма -->
 <div id="modalForm" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 9999; justify-content: center; align-items: center;">
@@ -336,13 +274,34 @@
   }
 
   async function sendTelegramWithDownload(event) {
-    event.preventDefault();
-    const form = event.target;
-    const name = form.name.value;
-    const phone = form.phone.value;
+  event.preventDefault();
+  const form = event.target;
+  const name = form.name.value;
+  const phone = form.phone.value;
 
-    const message = `📥 Запрос на проект и смету:
+  const token = "7001009647:AAE9rV84I7zD81b3C2Zs4DBHwgpwZe2eW3k";
+  const chatId = "81302621";
+  const message = `📥 Запрос на проект и смету:
 👤 Имя: ${name}
+📞 Телефон: ${phone}`;
+
+  const response = await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
+    method: "POST",
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ chat_id: chatId, text: message })
+  });
+
+  const status = document.getElementById("formStatus");
+  if (response.ok) {
+    status.textContent = "✅ Заявка отправлена! Загружаем файл...";
+    setTimeout(() => {
+      window.location.href = "https://disk.yandex.ru/d/atXBGGPm1h6CLA";
+      closeForm();
+    }, 1500);
+  } else {
+    status.textContent = "❌ Ошибка при отправке. Попробуйте позже.";
+  }
+}
 📞 Телефон: ${phone}`;
 
     const response = await fetch("https://formspree.io/f/mqkrgqqv", {
@@ -388,23 +347,17 @@
       status.textContent = "❌ Ошибка при отправке. Попробуйте позже.";
     }
   }
-
+</script>
   <!-- Begin LeadBack code {literal} -->
   <script>
-      var _emv = _emv || [];
-      _emv['campaign'] = 'd9e76e452a5ee3a0c1c8c6aa';
-
-      (function() {
-          var em = document.createElement('script'); em.type = 'text/javascript'; em.async = true;
-          em.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'leadback.ru/js/leadback.js';
-          var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(em, s);
-      })();
+    var _emv = _emv || [];
+    _emv['campaign'] = 'd9e76e452a5ee3a0c1c8c6aa';
+    (function() {
+      var em = document.createElement('script'); em.type = 'text/javascript'; em.async = true;
+      em.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'leadback.ru/js/leadback.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(em, s);
+    })();
   </script>
   <!-- End LeadBack code {/literal} -->
-
-  <footer>
-    © ООО «Алмастрой» 2000–2025
-  </footer>
-
 </body>
 </html>
