@@ -292,16 +292,13 @@
   const status = document.getElementById("formStatus");
   status.textContent = "⏳ Отправка...";
 
-  const proxyUrl = "https://script.google.com/macros/s/AKfycbylzFtZoHjIJvHgF_fLPAMrN2vv81DAZ7y3_4IQFwLywVPj0QMNtRUxOEaFEK1OLVxK/exec";
+  const proxyUrl = "https://almabot.web.app/api/send";
   const message = `📥 Запрос на проект и смету:
 👤 Имя: ${name}
 📞 Телефон: ${phone}`;
 
   try {
-    const response = await fetch(`${proxyUrl}?chat_id=81302621&message=${encodeURIComponent(message)}`, {
-      method: 'GET',
-      mode: 'no-cors'
-    });
+    const response = await fetch(`${proxyUrl}?chat_id=81302621&text=${encodeURIComponent(message)}`);
     if (response.ok) {
       status.innerHTML = "<span style='color: green; animation: bounce 0.5s ease;'>✅ Заявка отправлена! Загружаем файл...</span>";
       setTimeout(() => {
