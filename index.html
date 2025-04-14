@@ -257,10 +257,10 @@
 </footer>
 
 <!-- Модальная форма -->
-<div id="modalForm" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 9999; justify-content: center; align-items: center;">
-  <div style="background: white; padding: 30px; border-radius: 10px; max-width: 400px; width: 90%; box-shadow: 0 0 20px rgba(0,0,0,0.6); text-align: center;">
+<div id="modalForm" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 9999; display: flex; justify-content: center; align-items: center;">
+  <div style="background: white; padding: 30px; border-radius: 10px; max-width: 400px; width: 100%; box-shadow: 0 0 20px rgba(0,0,0,0.6); text-align: center; display: flex; flex-direction: column; align-items: center;">
     <h3 style="margin-bottom: 20px; color: black;">Оставьте заявку — и получите проект и смету</h3>
-    <form onsubmit="return sendTelegramWithDownload(event)">
+    <form onsubmit="return sendTelegramWithDownload(event)" style="width: 100%;">
       <input type="text" name="name" placeholder="Ваше имя" required style="width: 100%; padding: 10px; margin-bottom: 10px; background: #fff9c4;">
       <input type="tel" name="phone" placeholder="Телефон" required style="width: 100%; padding: 10px; margin-bottom: 15px; background: #fff9c4;">
       <button type="submit" style="padding: 12px 25px; background-color: #d40000; color: white; border: none; border-radius: 5px; font-weight: bold;">Получить архив</button>
@@ -328,3 +328,4 @@
   <!-- End LeadBack code {/literal} -->
 </body>
 </html>
+
