@@ -308,15 +308,11 @@
         text: message
       })
     });
-    if (response.ok) {
-      status.innerHTML = "<span style='color: green; animation: bounce 0.5s ease;'>✅ Заявка отправлена! Загружаем файл...</span>";
+    status.innerHTML = "<span style='color: green; animation: bounce 0.5s ease;'>✅ Заявка отправлена! Загружаем файл...</span>";
       setTimeout(() => {
         window.location.href = "https://disk.yandex.ru/d/atXBGGPm1h6CLA";
         closeForm();
       }, 1500);
-    } else {
-      status.textContent = "❌ Ошибка при отправке. Попробуйте позже.";
-    }
   } catch (error) {
     status.textContent = "❌ Не удалось отправить. Проверьте подключение.";
   }
@@ -335,4 +331,3 @@
   <!-- End LeadBack code {/literal} -->
 </body>
 </html>
-
