@@ -338,7 +338,7 @@
     <h2 style="margin: 0; text-align: center; color: #000; text-shadow: 1px 1px 2px rgba(0,0,0,0.3);">Оставьте заявку</h2>
     <input type="text" id="name" name="name" placeholder="Ваше имя" required style="padding: 10px; border: 1px solid #ccc; border-radius: 6px; font-size: 16px; text-shadow: 1px 1px 1px rgba(0,0,0,0.1);">
     <input type="tel" id="phone" name="phone" placeholder="Телефон" required style="padding: 10px; border: 1px solid #ccc; border-radius: 6px; font-size: 16px; text-shadow: 1px 1px 1px rgba(0,0,0,0.1);">
-    <button type="submit" class="animated-button">Отправить и скачать смету</button>
+    <button type="submit" class="animated-button glow-on-hover pulse-effect">Отправить и скачать смету</button>
     <div id="sending" style="display:none; text-align:center; font-size:14px; color:#888;">⏳ Отправка...</div>
   </form>
 </div>
@@ -354,6 +354,16 @@
     from { transform: translateY(30px); opacity: 0; }
     to { transform: translateY(0); opacity: 1; }
   }
+  @keyframes pulse {
+    0% { box-shadow: 0 0 10px rgba(42, 171, 238, 0.5); }
+    50% { box-shadow: 0 0 25px rgba(42, 171, 238, 1); }
+    100% { box-shadow: 0 0 10px rgba(42, 171, 238, 0.5); }
+  }
+  @keyframes clickBounce {
+    0% { transform: scale(1); }
+    50% { transform: scale(0.95); }
+    100% { transform: scale(1); }
+  }
   .animated-button {
     background: #2AABEE;
     color: white;
@@ -363,63 +373,18 @@
     font-size: 16px;
     cursor: pointer;
     text-shadow: 1px 1px 1px rgba(0,0,0,0.2);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-    box-shadow: 0 4px 12px rgba(42, 171, 238, 0.4);
+    transition: all 0.3s ease;
+    animation: pulse 2s infinite;
   }
-  .animated-button:hover {
-    transform: scale(1.07);
-    box-shadow: 0 6px 18px rgba(42, 171, 238, 0.6);
+  .animated-button.glow-on-hover:hover {
+    transform: scale(1.08);
+    box-shadow: 0 0 25px rgba(42, 171, 238, 0.9), 0 0 50px rgba(42, 171, 238, 0.7);
+  }
+  .animated-button:active {
+    animation: clickBounce 0.2s ease;
   }
 </style>
 
-<script>
-  document.addEventListener("DOMContentLoaded", function() {
-    const smetaLink = document.querySelector('.pdf a');
-    if (smetaLink) {
-      smetaLink.addEventListener('click', function(e) {
-        e.preventDefault();
-        document.getElementById('popup').style.display = 'flex';
-      });
-    }
-
-    document.getElementById("form").addEventListener("submit", function(e) {
-      e.preventDefault();
-      const name = document.getElementById("name").value;
-      const phone = document.getElementById("phone").value;
-      const sending = document.getElementById("sending");
-      const successMsg = document.getElementById("success-message");
-      sending.style.display = 'block';
-
-      fetch("https://api.telegram.org/bot7001009647:AAE9rV84I7zD81b3C2Zs4DBHwgpwZe2eW3k/sendMessage", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          chat_id: 568878492,
-          text: `📥 Заявка с сайта:\n👤 Имя: ${name}\n📞 Телефон: ${phone}`
-        })
-      })
-      .then(response => response.json())
-      .then(data => {
-        sending.style.display = 'none';
-        if (data.ok) {
-          document.getElementById("popup").style.display = 'none';
-          successMsg.style.display = 'block';
-          setTimeout(() => {
-            successMsg.style.display = 'none';
-            window.location.href = "https://disk.yandex.ru/d/atXBGGPm1h6CLA";
-          }, 2000);
-        } else {
-          alert('Ошибка отправки в Telegram: ' + data.description);
-        }
-      })
-      .catch(error => {
-        sending.style.display = 'none';
-        console.error('Ошибка:', error);
-        alert('Не удалось отправить заявку. Попробуйте позже.');
-      });
-    });
-  });
-</script>
 
 </body>
 </html>
