@@ -332,15 +332,27 @@
     © ООО «Алмастрой» 2000–2025
   </footer>
 <!-- Всплывающая форма -->
-<div id="popup" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); justify-content: center; align-items: center; z-index: 9999;">
-  <form id="form" style="background: white; padding: 30px; border-radius: 12px; box-shadow: 0 0 20px rgba(0,0,0,0.3); display: flex; flex-direction: column; gap: 15px; width: 90%; max-width: 400px; font-family: Montserrat, sans-serif; position: relative;">
+<div id="popup" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); justify-content: center; align-items: center; z-index: 9999; animation: fadeIn 0.3s ease-in-out;">
+  <form id="form" style="background: white; padding: 30px; border-radius: 12px; box-shadow: 0 0 20px rgba(0,0,0,0.3); display: flex; flex-direction: column; gap: 15px; width: 90%; max-width: 400px; font-family: Montserrat, sans-serif; position: relative; animation: slideUp 0.4s ease-out;">
     <button type="button" class="close-btn" onclick="document.getElementById('popup').style.display='none'" style="position: absolute; top: 10px; right: 10px; background: transparent; border: none; font-size: 24px; cursor: pointer; color: #333;">&times;</button>
-    <h2 style="margin: 0; text-align: center; color: #000; text-shadow: none;">Оставьте заявку</h2>
-    <input type="text" id="name" name="name" placeholder="Ваше имя" required style="padding: 10px; border: 1px solid #ccc; border-radius: 6px; font-size: 16px;">
-    <input type="tel" id="phone" name="phone" placeholder="Телефон" required style="padding: 10px; border: 1px solid #ccc; border-radius: 6px; font-size: 16px;">
-    <button type="submit" style="background: #2AABEE; color: white; padding: 12px; border: none; border-radius: 6px; font-size: 16px; cursor: pointer; transition: background-color 0.3s ease;">Отправить и скачать смету</button>
+    <h2 style="margin: 0; text-align: center; color: #000; text-shadow: 1px 1px 2px rgba(0,0,0,0.3);">Оставьте заявку</h2>
+    <input type="text" id="name" name="name" placeholder="Ваше имя" required style="padding: 10px; border: 1px solid #ccc; border-radius: 6px; font-size: 16px; text-shadow: 1px 1px 1px rgba(0,0,0,0.1);">
+    <input type="tel" id="phone" name="phone" placeholder="Телефон" required style="padding: 10px; border: 1px solid #ccc; border-radius: 6px; font-size: 16px; text-shadow: 1px 1px 1px rgba(0,0,0,0.1);">
+    <button type="submit" style="background: #2AABEE; color: white; padding: 12px; border: none; border-radius: 6px; font-size: 16px; cursor: pointer; transition: background-color 0.3s ease; text-shadow: 1px 1px 1px rgba(0,0,0,0.2);">Отправить и скачать смету</button>
+    <div id="sending" style="display:none; text-align:center; font-size:14px; color:#888;">⏳ Отправка...</div>
   </form>
 </div>
+
+<style>
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  @keyframes slideUp {
+    from { transform: translateY(30px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+  }
+</style>
 
 <script>
   document.addEventListener("DOMContentLoaded", function() {
@@ -356,6 +368,8 @@
       e.preventDefault();
       const name = document.getElementById("name").value;
       const phone = document.getElementById("phone").value;
+      const sending = document.getElementById("sending");
+      sending.style.display = 'block';
 
       fetch("https://api.telegram.org/bot7001009647:AAE9rV84I7zD81b3C2Zs4DBHwgpwZe2eW3k/sendMessage", {
         method: "POST",
@@ -367,6 +381,7 @@
       })
       .then(response => response.json())
       .then(data => {
+        sending.style.display = 'none';
         if (data.ok) {
           document.getElementById("popup").style.display = 'none';
           window.location.href = "https://disk.yandex.ru/d/atXBGGPm1h6CLA";
@@ -375,12 +390,14 @@
         }
       })
       .catch(error => {
+        sending.style.display = 'none';
         console.error('Ошибка:', error);
         alert('Не удалось отправить заявку. Попробуйте позже.');
       });
     });
   });
 </script>
+
 
 </body>
 </html>
