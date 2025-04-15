@@ -338,10 +338,12 @@
     <h2 style="margin: 0; text-align: center; color: #000; text-shadow: 1px 1px 2px rgba(0,0,0,0.3);">Оставьте заявку</h2>
     <input type="text" id="name" name="name" placeholder="Ваше имя" required style="padding: 10px; border: 1px solid #ccc; border-radius: 6px; font-size: 16px; text-shadow: 1px 1px 1px rgba(0,0,0,0.1);">
     <input type="tel" id="phone" name="phone" placeholder="Телефон" required style="padding: 10px; border: 1px solid #ccc; border-radius: 6px; font-size: 16px; text-shadow: 1px 1px 1px rgba(0,0,0,0.1);">
-    <button type="submit" style="background: #2AABEE; color: white; padding: 12px; border: none; border-radius: 6px; font-size: 16px; cursor: pointer; transition: background-color 0.3s ease; text-shadow: 1px 1px 1px rgba(0,0,0,0.2);">Отправить и скачать смету</button>
+    <button type="submit" style="background: #2AABEE; color: white; padding: 12px; border: none; border-radius: 6px; font-size: 16px; cursor: pointer; transition: all 0.3s ease; text-shadow: 1px 1px 1px rgba(0,0,0,0.2); transform: scale(1);" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">Отправить и скачать смету</button>
     <div id="sending" style="display:none; text-align:center; font-size:14px; color:#888;">⏳ Отправка...</div>
   </form>
 </div>
+
+<div id="success-message" style="display:none; position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%); background: #4BB543; color: white; padding: 15px 25px; border-radius: 8px; font-family: Montserrat, sans-serif; font-size: 16px; box-shadow: 0 4px 12px rgba(0,0,0,0.2); z-index: 10000;">✅ Заявка успешно отправлена!</div>
 
 <style>
   @keyframes fadeIn {
@@ -369,6 +371,7 @@
       const name = document.getElementById("name").value;
       const phone = document.getElementById("phone").value;
       const sending = document.getElementById("sending");
+      const successMsg = document.getElementById("success-message");
       sending.style.display = 'block';
 
       fetch("https://api.telegram.org/bot7001009647:AAE9rV84I7zD81b3C2Zs4DBHwgpwZe2eW3k/sendMessage", {
@@ -384,7 +387,11 @@
         sending.style.display = 'none';
         if (data.ok) {
           document.getElementById("popup").style.display = 'none';
-          window.location.href = "https://disk.yandex.ru/d/atXBGGPm1h6CLA";
+          successMsg.style.display = 'block';
+          setTimeout(() => {
+            successMsg.style.display = 'none';
+            window.location.href = "https://disk.yandex.ru/d/atXBGGPm1h6CLA";
+          }, 2000);
         } else {
           alert('Ошибка отправки в Telegram: ' + data.description);
         }
@@ -397,6 +404,7 @@
     });
   });
 </script>
+
 
 
 </body>
