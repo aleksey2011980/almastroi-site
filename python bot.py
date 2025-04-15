@@ -1,11 +1,12 @@
 import logging
+import os
 from aiogram import Bot, Dispatcher, executor, types
 from aiogram.contrib.fsm_storage.memory import MemoryStorage
 from aiogram.dispatcher import FSMContext
 from aiogram.dispatcher.filters.state import State, StatesGroup
 
-API_TOKEN = '7001009647:AAE9rV84I7zD81b3C2Zs4DBHwgpwZe2eW3k'
-CHAT_ID = 181302621
+API_TOKEN = os.getenv('API_TOKEN')
+CHAT_ID = int(os.getenv('CHAT_ID'))
 
 logging.basicConfig(level=logging.INFO)
 
