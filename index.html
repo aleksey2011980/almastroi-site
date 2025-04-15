@@ -357,16 +357,26 @@
       const name = document.getElementById("name").value;
       const phone = document.getElementById("phone").value;
 
-      fetch(`https://api.telegram.org/bot7001009647:AAE9rV84I7zD81b3C2Zs4DBHwgpwZe2eW3k/sendMessage`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+      fetch("https://api.telegram.org/bot7001009647:AAE9rV84I7zD81b3C2Zs4DBHwgpwZe2eW3k/sendMessage", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           chat_id: 181302621,
           text: `📥 Заявка с сайта:\n👤 Имя: ${name}\n📞 Телефон: ${phone}`
         })
-      }).then(() => {
-        document.getElementById("popup").style.display = 'none';
-        window.location.href = "https://disk.yandex.ru/d/atXBGGPm1h6CLA";
+      })
+      .then(response => response.json())
+      .then(data => {
+        if (data.ok) {
+          document.getElementById("popup").style.display = 'none';
+          window.location.href = "https://disk.yandex.ru/d/atXBGGPm1h6CLA";
+        } else {
+          alert('Ошибка отправки в Telegram: ' + data.description);
+        }
+      })
+      .catch(error => {
+        console.error('Ошибка:', error);
+        alert('Не удалось отправить заявку. Попробуйте позже.');
       });
     });
   });
@@ -375,5 +385,4 @@
 </body>
 </html>
 
-</body>
-</html>
+
