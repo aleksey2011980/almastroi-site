@@ -345,45 +345,55 @@
 
 <div id="success-message" style="display:none; position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%); background: #4BB543; color: white; padding: 15px 25px; border-radius: 8px; font-family: Montserrat, sans-serif; font-size: 16px; box-shadow: 0 4px 12px rgba(0,0,0,0.2); z-index: 10000;">✅ Заявка успешно отправлена!</div>
 
-<style>
-  @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-  }
-  @keyframes slideUp {
-    from { transform: translateY(30px); opacity: 0; }
-    to { transform: translateY(0); opacity: 1; }
-  }
-  @keyframes pulse {
-    0% { box-shadow: 0 0 10px rgba(42, 171, 238, 0.5); }
-    50% { box-shadow: 0 0 25px rgba(42, 171, 238, 1); }
-    100% { box-shadow: 0 0 10px rgba(42, 171, 238, 0.5); }
-  }
-  @keyframes clickBounce {
-    0% { transform: scale(1); }
-    50% { transform: scale(0.95); }
-    100% { transform: scale(1); }
-  }
-  .animated-button {
-    background: #2AABEE;
-    color: white;
-    padding: 12px;
-    border: none;
-    border-radius: 6px;
-    font-size: 16px;
-    cursor: pointer;
-    text-shadow: 1px 1px 1px rgba(0,0,0,0.2);
-    transition: all 0.3s ease;
-    animation: pulse 2s infinite;
-  }
-  .animated-button.glow-on-hover:hover {
-    transform: scale(1.08);
-    box-shadow: 0 0 25px rgba(42, 171, 238, 0.9), 0 0 50px rgba(42, 171, 238, 0.7);
-  }
-  .animated-button:active {
-    animation: clickBounce 0.2s ease;
-  }
-</style>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const smetaLink = document.querySelector('.pdf a');
+    if (smetaLink) {
+      smetaLink.addEventListener('click', function(e) {
+        e.preventDefault();
+        document.getElementById('popup').style.display = 'flex';
+      });
+    }
+
+    document.getElementById("form").addEventListener("submit", function(e) {
+      e.preventDefault();
+      const name = document.getElementById("name").value;
+      const phone = document.getElementById("phone").value;
+      const sending = document.getElementById("sending");
+      const successMsg = document.getElementById("success-message");
+      sending.style.display = 'block';
+
+      fetch("https://api.telegram.org/bot7001009647:AAE9rV84I7zD81b3C2Zs4DBHwgpwZe2eW3k/sendMessage", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          chat_id: 568878492,
+          text: `📥 Заявка с сайта:\n👤 Имя: ${name}\n📞 Телефон: ${phone}`
+        })
+      })
+      .then(response => response.json())
+      .then(data => {
+        sending.style.display = 'none';
+        if (data.ok) {
+          document.getElementById("popup").style.display = 'none';
+          successMsg.style.display = 'block';
+          setTimeout(() => {
+            successMsg.style.display = 'none';
+            window.location.href = "https://disk.yandex.ru/d/atXBGGPm1h6CLA";
+          }, 2000);
+        } else {
+          alert('Ошибка отправки в Telegram: ' + data.description);
+        }
+      })
+      .catch(error => {
+        sending.style.display = 'none';
+        console.error('Ошибка:', error);
+        alert('Не удалось отправить заявку. Попробуйте позже.');
+      });
+    });
+  });
+</script>
+
 
 
 </body>
