@@ -362,17 +362,7 @@ function submitMiniForm(event) {
   });
 }
 </script>
-<!-- Экскурсия форма -->
-<section style="padding: 40px 20px; background: #111; color: white; text-align: center;">
-  <h2 style="margin-bottom: 10px;">ЭКСКУРСИЯ</h2>
-  <p style="font-size: 14px; color: #aaa; margin-bottom: 20px;">Запишитесь на экскурсию по объекту. У нас сейчас 23 активных стройки, найдем для вас что-то подходящее</p>
-  <form onsubmit="submitExcursionForm(event)" style="max-width: 400px; margin: auto; display: flex; flex-direction: column; gap: 15px;">
-    <input type="text" id="excursion-name" placeholder="Имя" required style="padding: 12px; border-radius: 8px; border: none; font-size: 16px;">
-    <input type="tel" id="excursion-phone" placeholder="Номер телефона" required style="padding: 12px; border-radius: 8px; border: none; font-size: 16px;">
-    <button type="submit" style="background: #007bff; color: white; padding: 12px; font-size: 16px; border: none; border-radius: 8px; cursor: pointer;">Записаться</button>
-    <div id="excursion-sending" style="display: none; color: #aaa; font-size: 14px;">⏳ Отправка...</div>
-  </form>
-</section>
+
   
 <section class="portfolio">
   <h2>Портфолио</h2>
@@ -388,6 +378,18 @@ function submitMiniForm(event) {
     <img src="4.png" alt="Кровля дома" />
     <figcaption style="font-size: 12px; color: #aaa; text-align: center; margin-top: 4px;">Кровля дома</figcaption>
   </figure>
+</section>
+
+  <!-- Экскурсия форма -->
+<section style="padding: 40px 20px; background: #111; color: white; text-align: center;">
+  <h2 style="margin-bottom: 10px;">ЭКСКУРСИЯ</h2>
+  <p style="font-size: 14px; color: #aaa; margin-bottom: 20px;">Запишитесь на экскурсию по объекту. У нас сейчас 23 активных стройки, найдем для вас что-то подходящее</p>
+  <form onsubmit="submitExcursionForm(event)" style="max-width: 400px; margin: auto; display: flex; flex-direction: column; gap: 15px;">
+    <input type="text" id="excursion-name" placeholder="Имя" required style="padding: 12px; border-radius: 8px; border: none; font-size: 16px;">
+    <input type="tel" id="excursion-phone" placeholder="Номер телефона" required style="padding: 12px; border-radius: 8px; border: none; font-size: 16px;">
+    <button type="submit" style="background: #007bff; color: white; padding: 12px; font-size: 16px; border: none; border-radius: 8px; cursor: pointer;">Записаться</button>
+    <div id="excursion-sending" style="display: none; color: #aaa; font-size: 14px;">⏳ Отправка...</div>
+  </form>
 </section>
 
 <!-- Архитектура -->
