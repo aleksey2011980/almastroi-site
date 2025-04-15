@@ -382,14 +382,20 @@
     document.getElementById("form").addEventListener("submit", function(e) {
       e.preventDefault();
       const name = document.getElementById("name").value;
-      const phone = document.getElementById("phone").value;
+      let phone = document.getElementById("phone").value;
+      let cleanPhone = phone.replace(/[^0-9+]/g, '');
+
+      if (cleanPhone.length < 11) {
+        alert('Пожалуйста, введите полный номер телефона');
+        return;
+      }
 
       fetch("https://api.telegram.org/bot7001009647:AAE9rV84I7zD81b3C2Zs4DBHwgpwZe2eW3k/sendMessage", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           chat_id: 568878492,
-          text: `📥 Заявка с сайта:\n👤 Имя: ${name}\n📞 Телефон: ${phone}`
+          text: `📥 Заявка с сайта:\n👤 Имя: ${name}\n📞 Телефон: ${cleanPhone}`
         })
       })
       .then(response => response.json())
@@ -408,7 +414,6 @@
     });
   });
 </script>
-
 
 </body>
 </html>
