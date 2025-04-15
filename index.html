@@ -289,6 +289,66 @@
        <li>Строительство бассейнов</li>
     </ul>
   </section>
+<!-- Всплывающая форма -->
+<div id="popup" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); justify-content: center; align-items: center; z-index: 9999; animation: fadeIn 0.3s ease-in-out;">
+  <form id="form" style="background: #fff; padding: 30px; border-radius: 16px; box-shadow: 0 15px 30px rgba(0,0,0,0.3); display: flex; flex-direction: column; gap: 16px; width: 90%; max-width: 400px; font-family: Montserrat, sans-serif; position: relative; animation: slideUp 0.4s ease-out;">
+    <button type="button" class="close-btn" onclick="document.getElementById('popup').style.display='none'" style="position: absolute; top: 10px; right: 10px; background: transparent; border: none; font-size: 24px; cursor: pointer; color: #333;">&times;</button>
+    <h2 style="margin: 0; text-align: center; color: #000; text-shadow: 1px 1px 2px rgba(0,0,0,0.3); font-size: 22px;">Оставьте заявку</h2>
+    <input type="text" id="name" name="name" placeholder="Ваше имя" required style="padding: 12px; border: 1px solid #ccc; border-radius: 8px; font-size: 16px; text-shadow: 1px 1px 1px rgba(0,0,0,0.05);">
+    <input type="tel" id="phone" name="phone" placeholder="Телефон" required style="padding: 12px; border: 1px solid #ccc; border-radius: 8px; font-size: 16px; text-shadow: 1px 1px 1px rgba(0,0,0,0.05);">
+    <button type="submit" class="animated-button">Отправить и скачать смету</button>
+    <div id="sending" style="display:none; text-align:center; font-size:14px; color:#888;">⏳ Отправка...</div>
+  </form>
+</div>
+
+<div id="success-message" style="display:none; position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%); background: #4BB543; color: white; padding: 15px 25px; border-radius: 8px; font-family: Montserrat, sans-serif; font-size: 16px; box-shadow: 0 4px 12px rgba(0,0,0,0.2); z-index: 10000;">✅ Заявка успешно отправлена!</div>
+
+<!-- Блок заказа строительства (перемещён после портфолио) -->
+<section style="display: flex; justify-content: flex-end; align-items: center; background: #111; color: #fff; padding: 40px 20px; font-family: Montserrat, sans-serif; margin-top: 60px;">
+  <div style="max-width: 400px; background: #1a1a1a; padding: 30px; border-radius: 12px;">
+    <h3 style="color: #fff; font-size: 20px; margin-bottom: 15px;">ПРИМЕР ПРОЕКТА</h3>
+    <form onsubmit="submitMiniForm(event)" style="display: flex; flex-direction: column; gap: 15px;">
+      <label style="color: #bbb; font-size: 14px;">Телефон</label>
+      <input id="mini-phone" type="tel" required style="padding: 10px; border: none; border-bottom: 1px solid #555; background: transparent; color: white; font-size: 16px;">
+      <button type="submit" style="align-self: flex-end; background: #007bff; color: white; padding: 10px 20px; border: none; border-radius: 999px; cursor: pointer; transition: background 0.3s ease;">Получить</button>
+    </form>
+    <p style="color: #777; font-size: 12px; margin-top: 10px;">Нажимая на кнопку, вы даете согласие на обработку персональных данных и соглашаетесь с <a href="#" style="color: #aaa; text-decoration: underline;">политикой конфиденциальности</a>.</p>
+  </div>
+</section>
+
+<script>
+function submitMiniForm(event) {
+  event.preventDefault();
+  const phone = document.getElementById("mini-phone").value;
+  const sending = document.getElementById("sending");
+  const successMsg = document.getElementById("success-message");
+  sending.style.display = 'block';
+
+  fetch("https://api.telegram.org/bot7001009647:AAE9rV84I7zD81b3C2Zs4DBHwgpwZe2eW3k/sendMessage", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      chat_id: 568878492,
+      text: `📥 Заказ проекта с сайта:\n📞 Телефон: ${phone}`
+    })
+  })
+  .then(response => response.json())
+  .then(data => {
+    sending.style.display = 'none';
+    if (data.ok) {
+      successMsg.style.display = 'block';
+      setTimeout(() => { successMsg.style.display = 'none'; }, 2500);
+    } else {
+      alert('Ошибка отправки в Telegram: ' + data.description);
+    }
+  })
+  .catch(error => {
+    sending.style.display = 'none';
+    console.error('Ошибка:', error);
+    alert('Не удалось отправить заявку. Попробуйте позже.');
+  });
+}
+</script>
 
   <section class="portfolio">
     <h2>Проект дома ALMA-HOUSE 200</h2>
@@ -434,66 +494,7 @@
     });
   });
 </script>
-<!-- Всплывающая форма -->
-<div id="popup" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); justify-content: center; align-items: center; z-index: 9999; animation: fadeIn 0.3s ease-in-out;">
-  <form id="form" style="background: #fff; padding: 30px; border-radius: 16px; box-shadow: 0 15px 30px rgba(0,0,0,0.3); display: flex; flex-direction: column; gap: 16px; width: 90%; max-width: 400px; font-family: Montserrat, sans-serif; position: relative; animation: slideUp 0.4s ease-out;">
-    <button type="button" class="close-btn" onclick="document.getElementById('popup').style.display='none'" style="position: absolute; top: 10px; right: 10px; background: transparent; border: none; font-size: 24px; cursor: pointer; color: #333;">&times;</button>
-    <h2 style="margin: 0; text-align: center; color: #000; text-shadow: 1px 1px 2px rgba(0,0,0,0.3); font-size: 22px;">Оставьте заявку</h2>
-    <input type="text" id="name" name="name" placeholder="Ваше имя" required style="padding: 12px; border: 1px solid #ccc; border-radius: 8px; font-size: 16px; text-shadow: 1px 1px 1px rgba(0,0,0,0.05);">
-    <input type="tel" id="phone" name="phone" placeholder="Телефон" required style="padding: 12px; border: 1px solid #ccc; border-radius: 8px; font-size: 16px; text-shadow: 1px 1px 1px rgba(0,0,0,0.05);">
-    <button type="submit" class="animated-button">Отправить и скачать смету</button>
-    <div id="sending" style="display:none; text-align:center; font-size:14px; color:#888;">⏳ Отправка...</div>
-  </form>
-</div>
 
-<div id="success-message" style="display:none; position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%); background: #4BB543; color: white; padding: 15px 25px; border-radius: 8px; font-family: Montserrat, sans-serif; font-size: 16px; box-shadow: 0 4px 12px rgba(0,0,0,0.2); z-index: 10000;">✅ Заявка успешно отправлена!</div>
-
-<!-- Блок заказа строительства (перемещён после портфолио) -->
-<section style="display: flex; justify-content: flex-end; align-items: center; background: #111; color: #fff; padding: 40px 20px; font-family: Montserrat, sans-serif; margin-top: 60px;">
-  <div style="max-width: 400px; background: #1a1a1a; padding: 30px; border-radius: 12px;">
-    <h3 style="color: #fff; font-size: 20px; margin-bottom: 15px;">ПРИМЕР ПРОЕКТА</h3>
-    <form onsubmit="submitMiniForm(event)" style="display: flex; flex-direction: column; gap: 15px;">
-      <label style="color: #bbb; font-size: 14px;">Телефон</label>
-      <input id="mini-phone" type="tel" required style="padding: 10px; border: none; border-bottom: 1px solid #555; background: transparent; color: white; font-size: 16px;">
-      <button type="submit" style="align-self: flex-end; background: #007bff; color: white; padding: 10px 20px; border: none; border-radius: 999px; cursor: pointer; transition: background 0.3s ease;">Получить</button>
-    </form>
-    <p style="color: #777; font-size: 12px; margin-top: 10px;">Нажимая на кнопку, вы даете согласие на обработку персональных данных и соглашаетесь с <a href="#" style="color: #aaa; text-decoration: underline;">политикой конфиденциальности</a>.</p>
-  </div>
-</section>
-
-<script>
-function submitMiniForm(event) {
-  event.preventDefault();
-  const phone = document.getElementById("mini-phone").value;
-  const sending = document.getElementById("sending");
-  const successMsg = document.getElementById("success-message");
-  sending.style.display = 'block';
-
-  fetch("https://api.telegram.org/bot7001009647:AAE9rV84I7zD81b3C2Zs4DBHwgpwZe2eW3k/sendMessage", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-      chat_id: 568878492,
-      text: `📥 Заказ проекта с сайта:\n📞 Телефон: ${phone}`
-    })
-  })
-  .then(response => response.json())
-  .then(data => {
-    sending.style.display = 'none';
-    if (data.ok) {
-      successMsg.style.display = 'block';
-      setTimeout(() => { successMsg.style.display = 'none'; }, 2500);
-    } else {
-      alert('Ошибка отправки в Telegram: ' + data.description);
-    }
-  })
-  .catch(error => {
-    sending.style.display = 'none';
-    console.error('Ошибка:', error);
-    alert('Не удалось отправить заявку. Попробуйте позже.');
-  });
-}
-</script>
 
 
 </body>
