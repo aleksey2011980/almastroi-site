@@ -304,12 +304,26 @@
 <div id="success-message" style="display:none; position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%); background: #4BB543; color: white; padding: 15px 25px; border-radius: 8px; font-family: Montserrat, sans-serif; font-size: 16px; box-shadow: 0 4px 12px rgba(0,0,0,0.2); z-index: 10000;">✅ Заявка успешно отправлена!</div>
 
 
-<section style="display: flex; justify-content: space-between; align-items: center; background: #111; color: #fff; padding: 40px 20px; font-family: Montserrat, sans-serif; margin-top: 60px;">
-  <div style="max-width: 500px; padding-right: 30px;">
-    <h3 style="font-size: 20px; color: #fff; margin-bottom: 10px;">Преимущества строительства с нами</h3>
-    <p style="font-size: 15px; color: #bbb;">Добавьте сюда описание или список, например: сроки, цена под ключ, материалы и т.д.</p>
+<section style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-start; background: #111; color: #fff; padding: 40px 20px; font-family: Montserrat, sans-serif; margin-top: 60px; gap: 30px;">
+  <div style="max-width: 500px; padding-right: 30px; display: flex; flex-direction: column; gap: 12px;">
+    <div>
+      <h3 style="font-size: 22px; color: #fff; margin: 0;">12 лет</h3>
+      <p style="font-size: 14px; color: #bbb; margin: 0;">Основано в 2013 году</p>
+    </div>
+    <div>
+      <h3 style="font-size: 22px; color: #fff; margin: 0;">40 PRO</h3>
+      <p style="font-size: 14px; color: #bbb; margin: 0;">Команда — 40 профессионалов</p>
+    </div>
+    <div>
+      <h3 style="font-size: 22px; color: #fff; margin: 0;">350+</h3>
+      <p style="font-size: 14px; color: #bbb; margin: 0;">Реализовано более 350 проектов</p>
+    </div>
+    <div>
+      <h3 style="font-size: 22px; color: #fff; margin: 0;">57</h3>
+      <p style="font-size: 14px; color: #bbb; margin: 0;">Ведем 57 активных проектов</p>
+    </div>
   </div>
-  <div style="max-width: 400px; background: #1a1a1a; padding: 30px; border-radius: 12px;">
+  <div style="max-width: 400px; background: #1a1a1a; padding: 30px; border-radius: 12px; flex-grow: 1;">
     <h3 style="color: #fff; font-size: 20px; margin-bottom: 15px;">Заказать строительство дома</h3>
     <form onsubmit="submitMiniForm(event)" style="display: flex; flex-direction: column; gap: 15px;">
       <label style="color: #bbb; font-size: 14px;">Телефон</label>
