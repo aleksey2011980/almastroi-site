@@ -303,7 +303,7 @@
 <section style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-start; background: #111; color: #fff; padding: 20px 20px 30px; font-family: Montserrat, sans-serif; margin-top: 20px; gap: 30px;">
   <div style="max-width: 500px; padding-right: 30px; display: flex; flex-direction: column; gap: 12px;">
     <div>
-      <h3 style="font-size: 22px; color: #fff; margin: 0;">25 лет</h3>
+      <h3 style="font-size: 22px; color: #fff; margin: 0;">12 лет</h3>
       <p style="font-size: 14px; color: #bbb; margin: 0;">Основано в 2000 году</p>
     </div>
     <div>
@@ -311,8 +311,8 @@
       <p style="font-size: 14px; color: #bbb; margin: 0;">Команда — 40 профессионалов</p>
     </div>
     <div>
-      <h3 style="font-size: 22px; color: #fff; margin: 0;">1780+</h3>
-      <p style="font-size: 14px; color: #bbb; margin: 0;">Реализовано более 1780 проектов</p>
+      <h3 style="font-size: 22px; color: #fff; margin: 0;">35+</h3>
+      <p style="font-size: 14px; color: #bbb; margin: 0;">Реализовано более 35 проектов</p>
     </div>
     <div>
       <h3 style="font-size: 22px; color: #fff; margin: 0;">20</h3>
@@ -324,7 +324,7 @@
     <form onsubmit="submitMiniForm(event)" style="display: flex; flex-direction: column; gap: 15px;">
       <label style="color: #bbb; font-size: 14px;">Телефон</label>
       <input id="mini-phone" type="tel" required style="padding: 10px; border: none; border-bottom: 1px solid #555; background: transparent; color: white; font-size: 16px;">
-      <button type="submit" style="align-self: flex-end; background: #007bff; color: white; padding: 10px 20px; border: none; border-radius: 999px; cursor: pointer; transition: background 0.3s ease;">заказать</button>
+      <button type="submit" style="align-self: flex-end; background: #007bff; color: white; padding: 10px 20px; border: none; border-radius: 999px; cursor: pointer; transition: background 0.3s ease;">Получить</button>
     </form>
    
 </section>
@@ -363,21 +363,51 @@ function submitMiniForm(event) {
 }
 </script>
 
-  <section class="portfolio">
-  <h2>Проект домов серии ALMA-HOUSE</h2>
-  <figure style="margin: 0;">
-    <img src="2.png" alt="Фасад дома" />
-    <figcaption style="font-size: 12px; color: #aaa; text-align: center; margin-top: 4px;">ALMA-HOUSE 200</figcaption>
-  </figure>
-    <figure style="margin: 0;">
-    <img src="3.png" alt="Лестница на крышу" />
-    <figcaption style="font-size: 12px; color: #aaa; text-align: center; margin-top: 4px;">ALMA-HOUSE 120</figcaption>
-  </figure>
-    <figure style="margin: 0;">
-    <img src="4.png" alt="Кровля дома" />
-    <figcaption style="font-size: 12px; color: #aaa; text-align: center; margin-top: 4px;">ALMA-HOUSE 80</figcaption>
-  </figure>
-  </section>
+  
+
+<!-- Всплывающая форма экскурсии -->
+<section style="text-align: center; padding: 40px 20px; background: #111; color: #fff;">
+  <h2>ЭКСКУРСИЯ</h2>
+  <p style="max-width: 600px; margin: auto auto 20px; font-size: 16px; color: #ccc;">Запишитесь на экскурсию по объекту. У нас сейчас 23 активных стройки, найдём для вас что-то подходящее.</p>
+  <form onsubmit="submitExcursionForm(event)" style="display: flex; flex-direction: column; gap: 16px; max-width: 400px; margin: auto;">
+    <input type="text" id="excursion-name" placeholder="Имя" required style="padding: 12px; border-radius: 8px; border: 1px solid #555; font-size: 16px;">
+    <input type="tel" id="excursion-phone" placeholder="Номер телефона" required style="padding: 12px; border-radius: 8px; border: 1px solid #555; font-size: 16px;">
+    <button type="submit" style="background: #2AABEE; color: white; padding: 12px; border: none; border-radius: 8px; font-size: 16px; cursor: pointer;">Записаться</button>
+    <div id="excursion-sending" style="display:none; font-size:14px; color:#aaa;">⏳ Отправка...</div>
+  </form>
+</section>
+
+<script>
+function submitExcursionForm(e) {
+  e.preventDefault();
+  const name = document.getElementById("excursion-name").value;
+  const phone = document.getElementById("excursion-phone").value;
+  const sending = document.getElementById("excursion-sending");
+  sending.style.display = 'block';
+
+  fetch("https://api.telegram.org/bot7001009647:AAE9rV84I7zD81b3C2Zs4DBHwgpwZe2eW3k/sendMessage", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      chat_id: 568878492,
+      text: `📍 Заявка на ЭКСКУРСИЮ:
+👤 Имя: ${name}
+📞 Телефон: ${phone}`
+    })
+  })
+  .then(res => res.json())
+  .then(data => {
+    sending.style.display = 'none';
+    if (data.ok) alert("✅ Вы записаны на экскурсию!");
+    else alert("Ошибка: " + data.description);
+  })
+  .catch(err => {
+    sending.style.display = 'none';
+    alert("Ошибка отправки. Попробуйте позже.");
+    console.error(err);
+  });
+}
+</script>
 
   <section>
     <h2>Строительство Hi-tech дома 235 м² по цене  квартиры</h2>
