@@ -509,8 +509,17 @@ function submitExcursionForm(e) {
   @keyframes pulse {
   0% {
     transform: scale(1);
-    box-shadow: 0 0 25px rgba(42, 171, 238, 0.95);
+    box-shadow: 0 0 10px rgba(42, 171, 238, 0.7);
   }
+  50% {
+    transform: scale(1.07);
+    box-shadow: 0 0 20px rgba(42, 171, 238, 1);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 10px rgba(42, 171, 238, 0.7);
+  }
+}
   50% {
     transform: scale(1.3);
     box-shadow: 0 0 80px rgba(42, 171, 238, 1);
@@ -639,3 +648,4 @@ function submitExcursionForm(e) {
 
 </body>
 </html>
+
