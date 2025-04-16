@@ -324,7 +324,7 @@
     <form onsubmit="submitMiniForm(event)" style="display: flex; flex-direction: column; gap: 15px;">
       <label style="color: #bbb; font-size: 14px;">Телефон</label>
       <input id="mini-phone" type="tel" required style="padding: 10px; border: none; border-bottom: 1px solid #555; background: transparent; color: white; font-size: 16px;">
-      <button type="submit" style="align-self: flex-end; background: #007bff; color: white; padding: 10px 20px; border: none; border-radius: 999px; cursor: pointer; transition: background 0.3s ease;">заказать</button>
+      background: #2AABEE; color: white; padding: 12px; border: none; border-radius: 8px; font-size: 16px; cursor: pointer; text-shadow: 1px 1px 1px rgba(0,0,0,0.2); transition: all 0.3s ease; animation: pulse 2.5s infinite; box-shadow: 0 0 10px rgba(42, 171, 238, 0.6);"
     </form>
    
 </section>
@@ -342,7 +342,7 @@ function submitMiniForm(event) {
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
       chat_id: 568878492,
-      text: `📥 Заказ строительства с сайта:\n📞 Телефон: ${phone}`
+      text: `📥 Заказ проекта с сайта:\n📞 Телефон: ${phone}`
     })
   })
   .then(response => response.json())
@@ -368,26 +368,26 @@ function submitMiniForm(event) {
   <h2>Серия домов ALMA-HOUSE</h2>
   <figure style="margin: 0;">
     <img src="2.png" alt="Фасад дома" />
-    <figcaption style="font-size: 12px; color: #aaa; text-align: center; margin-top: 4px;">ALMA-HOUSE 200 цена 12.5 млн.руб.</figcaption>
+    <figcaption style="font-size: 12px; color: #aaa; text-align: center; margin-top: 4px;">Фасад дома</figcaption>
   </figure>
   <figure style="margin: 0;">
     <img src="3.png" alt="Лестница на крышу" />
-    <figcaption style="font-size: 12px; color: #aaa; text-align: center; margin-top: 4px;">ALMA-HOUSE 120 цена 8.4 млн.руб.</figcaption>
+    <figcaption style="font-size: 12px; color: #aaa; text-align: center; margin-top: 4px;">Лестница на крышу</figcaption>
   </figure>
   <figure style="margin: 0;">
     <img src="4.png" alt="Кровля дома" />
-    <figcaption style="font-size: 12px; color: #aaa; text-align: center; margin-top: 4px;">АLMA-HOUSE 90 цена 6,3 млн.руб.</figcaption>
+    <figcaption style="font-size: 12px; color: #aaa; text-align: center; margin-top: 4px;">Кровля дома</figcaption>
   </figure>
 </section>
 
   <!-- Экскурсия форма -->
 <section style="padding: 40px 20px; background: #111; color: white; text-align: center;">
   <h2 style="margin-bottom: 10px;">ЭКСКУРСИЯ</h2>
-  <p style="font-size: 14px; color: #aaa; margin-bottom: 20px;">Запишитесь на экскурсию просмотра участков под строительство. У нас сейчас 37 участков по 6-10 соток, найдем для вас что-то подходящее</p>
+  <p style="font-size: 14px; color: #aaa; margin-bottom: 20px;">Запишитесь на экскурсию по объекту. У нас сейчас 23 активных стройки, найдем для вас что-то подходящее</p>
   <form onsubmit="submitExcursionForm(event)" style="max-width: 400px; margin: auto; display: flex; flex-direction: column; gap: 15px;">
     <input type="text" id="excursion-name" placeholder="Имя" required style="padding: 12px; border-radius: 8px; border: none; font-size: 16px;">
     <input type="tel" id="excursion-phone" placeholder="Номер телефона" required style="padding: 12px; border-radius: 8px; border: none; font-size: 16px;">
-    <button type="submit" style="background: #007bff; color: white; padding: 12px; font-size: 16px; border: none; border-radius: 8px; cursor: pointer;">Записаться</button>
+    <button class="animated-button" style="background: #2AABEE; color: white; padding: 12px; border: none; border-radius: 8px; font-size: 16px; cursor: pointer; text-shadow: 1px 1px 1px rgba(0,0,0,0.2); transition: all 0.3s ease; animation: pulse 2.5s infinite; box-shadow: 0 0 10px rgba(42, 171, 238, 0.6);">Записаться</button>
     <div id="excursion-sending" style="display: none; color: #aaa; font-size: 14px;">⏳ Отправка...</div>
   </form>
 </section>
@@ -395,23 +395,23 @@ function submitMiniForm(event) {
 <!-- Архитектура -->
 <section style="padding: 40px 20px;">
   <h2 style="text-align: center;">Архитектура</h2>
-  <p style="text-align: center; font-size: 14px; color: #aaa; margin-top: 4px;">Выполненные TOP1 проекты  в г. Анапа</p>
+  <p style="text-align: center; font-size: 14px; color: #aaa; margin-top: 4px;">Наши работы Топ-1 в г. Анапа</p>
   <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; max-width: 1000px; margin: auto;">
     <figure style="margin: 0; text-align: center;">
       <img src="arch1.png" alt="Проект дома №1" style="width: 100%; height: auto; aspect-ratio: 4/3; object-fit: cover; border-radius: 8px;">
-      <figcaption style="font-size: 14px; color: #aaa; margin-top: 6px;">Лок Витязь.Спортивный комплекс в с.Витязево</figcaption>
+      <figcaption style="font-size: 14px; color: #aaa; margin-top: 6px;">Проект дома №1</figcaption>
     </figure>
     <figure style="margin: 0; text-align: center;">
       <img src="arch2.png" alt="Проект дома №2" style="width: 100%; height: auto; aspect-ratio: 4/3; object-fit: cover; border-radius: 8px;">
-      <figcaption style="font-size: 14px; color: #aaa; margin-top: 6px;">Спортивный комплекс в с.Витязево</figcaption>
+      <figcaption style="font-size: 14px; color: #aaa; margin-top: 6px;">Проект дома №2</figcaption>
     </figure>
     <figure style="margin: 0; text-align: center;">
       <img src="arch3.png" alt="Проект дома №3" style="width: 100%; height: auto; aspect-ratio: 4/3; object-fit: cover; border-radius: 8px;">
-      <figcaption style="font-size: 14px; color: #aaa; margin-top: 6px;">с.СУККО, 50 метровый бассейн в ВДЦ. Смена</figcaption>
+      <figcaption style="font-size: 14px; color: #aaa; margin-top: 6px;">Проект дома №3</figcaption>
     </figure>
     <figure style="margin: 0; text-align: center;">
       <img src="arch4.png" alt="Проект дома №4" style="width: 100%; height: auto; aspect-ratio: 4/3; object-fit: cover; border-radius: 8px;">
-      <figcaption style="font-size: 14px; color: #aaa; margin-top: 6px;"> ул.Черноморская дом 14. Бассейн в гостинице "Идиллия"</figcaption>
+      <figcaption style="font-size: 14px; color: #aaa; margin-top: 6px;">Проект дома №4</figcaption>
     </figure>
   </div>
 </section>
@@ -449,10 +449,10 @@ function submitExcursionForm(e) {
 </script>
 
   <section>
-    <h2>Строительство Hi-tech дома ALMA-HOUSE 200 по цене  квартиры</h2>
+    <h2>Строительство Hi-tech дома 235 м² по цене  квартиры</h2>
     <p>Компания «Алмастрой» предлагает построить  дом в городе Анапа и Анапском районе. Современные технологии, энергосбережение и дизайн будущего — уже сегодня. Возможно строительство по вашему проекту.</p>
     <div class="pdf">
-      📥 <a href="https://disk.yandex.ru/d/atXBGGPm1h6CLA" target="_blank">Скачать смету, проект  ALMA-HOUSE 200 (zip, 74 МБ)</a>
+      📥 <a href="https://disk.yandex.ru/d/atXBGGPm1h6CLA" target="_blank">Скачать смету, проект дома (zip, 74 МБ)</a>
     </div>
   </section>
 
@@ -560,7 +560,7 @@ function submitExcursionForm(e) {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           chat_id: 568878492,
-          text: `📥 Заявка скачали проект на сайта:\n👤 Имя: ${name}\n📞 Телефон: ${phone}`
+          text: `📥 Заявка с сайта:\n👤 Имя: ${name}\n📞 Телефон: ${phone}`
         })
       })
       .then(response => response.json())
