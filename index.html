@@ -243,6 +243,21 @@
       }
     }
   </style>
+  <script>
+function clearFormOnSubmit(form) {
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    setTimeout(() => {
+      form.reset();
+    }, 100);
+  });
+}
+
+window.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('form').forEach(form => clearFormOnSubmit(form));
+});
+</script>
+
 </head>
 <body>
   <header>
