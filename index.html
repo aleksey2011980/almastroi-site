@@ -182,7 +182,7 @@
     @keyframes pulseMove {
       0%, 100% {
         transform: scale(1) translateY(0);
-        box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+        box-shadow: 0 0 8px rgba(255, 255, 255, 0.6);
       }
       50% {
         transform: scale(1.05) translateY(-3px);
@@ -388,7 +388,7 @@ function submitMiniForm(event) {
   <form onsubmit="submitExcursionForm(event)" style="max-width: 400px; margin: auto; display: flex; flex-direction: column; gap: 15px;">
     <input type="text" id="excursion-name" placeholder="Имя" required style="padding: 12px; border-radius: 8px; border: none; font-size: 16px;">
     <input type="tel" id="excursion-phone" placeholder="Номер телефона" required style="padding: 12px; border-radius: 8px; border: none; font-size: 16px;">
-    <button class="animated-button" style="background: #2AABEE; color: white; padding: 12px; border: none; border-radius: 8px; font-size: 16px; cursor: pointer; text-shadow: 1px 1px 1px rgba(0,0,0,0.2); transition: all 0.3s ease; animation: pulse 1.8s infinite; box-shadow: 0 0 10px rgba(42, 171, 238, 0.6);">Записаться</button>
+    <button class="animated-button" style="background: #2AABEE; color: white; padding: 12px; border: none; border-radius: 8px; font-size: 16px; cursor: pointer; text-shadow: 1px 1px 1px rgba(0,0,0,0.2); transition: all 0.3s ease; animation: pulse 2s infinite; box-shadow: 0 0 10px rgba(42, 171, 238, 0.6);">Записаться</button>
     <div id="excursion-sending" style="display: none; color: #aaa; font-size: 14px;">⏳ Отправка...</div>
   </form>
 </section>
@@ -508,9 +508,18 @@ function submitExcursionForm(e) {
   }
   @keyframes pulse {
   0% {
+    box-shadow: 0 0 6px rgba(255, 255, 255, 0.5);
     transform: scale(1);
-    box-shadow: 0 0 10px rgba(42, 171, 238, 0.7);
   }
+  50% {
+    box-shadow: 0 0 16px rgba(255, 255, 255, 0.9);
+    transform: scale(1.02);
+  }
+  100% {
+    box-shadow: 0 0 6px rgba(255, 255, 255, 0.5);
+    transform: scale(1);
+  }
+}
   50% {
     transform: scale(1.07);
     box-shadow: 0 0 20px rgba(42, 171, 238, 1);
@@ -648,4 +657,3 @@ function submitExcursionForm(e) {
 
 </body>
 </html>
-
