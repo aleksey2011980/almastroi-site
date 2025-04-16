@@ -179,22 +179,35 @@
       animation: pulseMove 1.8s infinite ease-in-out;
     }
 
-    @keyframes pulseMove {
-      0%, 100% {
-        transform: scale(1) translateY(0);
-        box-shadow: 0 0 8px rgba(255, 255, 255, 0.6);
-      }
-      50% {
-        transform: scale(1.05) translateY(-3px);
-        box-shadow: 0 0 25px rgba(255, 255, 255, 0.8);
-      }
-    }
-
-    .buttons a.call { background-color: green; }
-    .buttons a.vk { background-color: #0077ff; }
-    .buttons a.tg { background-color: #229ED9; }
-    .buttons a.yt { background-color: #ff0000; color: white; }
-    .buttons a.consult { background-color: orange; }
+  style>
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 6px rgba(255, 255, 255, 0.4);
+  }
+  50% {
+    transform: scale(1.015);
+    box-shadow: 0 0 14px rgba(255, 255, 255, 0.7);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 6px rgba(255, 255, 255, 0.4);
+  }
+}
+.animated-button {
+  background: #2AABEE;
+  color: white;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  text-shadow: 1px 1px 1px rgba(0,0,0,0.2);
+  transition: all 0.3s ease;
+  animation: pulse 2s infinite;
+  box-shadow: 0 0 10px rgba(42, 171, 238, 0.6);
+}
+</style> }
 
     .pdf {
       margin-top: 20px;
