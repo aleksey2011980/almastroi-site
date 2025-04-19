@@ -577,7 +577,7 @@ function submitExcursionForm(e) {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           chat_id: 568878492,
-          text: `📥 Заявка скачали проект на сайта:\n👤 Имя: ${name}\n📞 Телефон: ${phone}`
+          text: `📥 Заявка скачали проект c сайта:\n👤 Имя: ${name}\n📞 Телефон: ${phone}`
         })
       })
       .then(response => response.json())
