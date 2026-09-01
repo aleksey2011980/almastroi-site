@@ -279,6 +279,24 @@ async function sendLuxuryLead(formId, fields) {
 
   return result;
 }
+
+function ensureLuxuryPhonePrefix(input) {
+  if (input && !input.value.trim()) input.value = '+7 ';
+}
+
+function initLuxuryPhonePrefixes() {
+  document.querySelectorAll('#mini-phone, #excursion-phone, #phone').forEach(function(input) {
+    ensureLuxuryPhonePrefix(input);
+    input.addEventListener('focus', function() {
+      ensureLuxuryPhonePrefix(input);
+    });
+    input.addEventListener('input', function() {
+      ensureLuxuryPhonePrefix(input);
+    });
+  });
+}
+
+document.addEventListener('DOMContentLoaded', initLuxuryPhonePrefixes);
 </script>
 
 </head>
@@ -332,7 +350,7 @@ async function sendLuxuryLead(formId, fields) {
     <button type="button" class="close-btn" onclick="document.getElementById('popup').style.display='none'" style="position: absolute; top: 10px; right: 10px; background: transparent; border: none; font-size: 24px; cursor: pointer; color: #333;">&times;</button>
     <h2 style="margin: 0; text-align: center; color: #000; text-shadow: 1px 1px 2px rgba(0,0,0,0.3); font-size: 22px;">Оставьте заявку</h2>
     <input type="text" id="name" name="name" placeholder="Ваше имя" required style="padding: 12px; border: 1px solid #ccc; border-radius: 8px; font-size: 16px; text-shadow: 1px 1px 1px rgba(0,0,0,0.05);">
-    <input type="tel" id="phone" name="phone" placeholder="Телефон" required style="padding: 12px; border: 1px solid #ccc; border-radius: 8px; font-size: 16px; text-shadow: 1px 1px 1px rgba(0,0,0,0.05);">
+    <input type="tel" id="phone" name="phone" value="+7 " placeholder="Телефон" inputmode="tel" autocomplete="tel" required style="padding: 12px; border: 1px solid #ccc; border-radius: 8px; font-size: 16px; text-shadow: 1px 1px 1px rgba(0,0,0,0.05);">
     <button type="submit" class="animated-button">Отправить и скачать смету</button>
     <div id="sending" style="display:none; text-align:center; font-size:14px; color:#888;">⏳ Отправка...</div>
   </form>
@@ -364,7 +382,7 @@ async function sendLuxuryLead(formId, fields) {
     <h3 style="color: #fff; font-size: 20px; margin-bottom: 15px;">Заказать строительство дома</h3>
     <form onsubmit="submitMiniForm(event)" style="display: flex; flex-direction: column; gap: 15px;">
       <label style="color: #bbb; font-size: 14px;">Телефон</label>
-      <input id="mini-phone" type="tel" required style="padding: 10px; border: none; border-bottom: 1px solid #555; background: transparent; color: white; font-size: 16px;">
+      <input id="mini-phone" type="tel" value="+7 " inputmode="tel" autocomplete="tel" required style="padding: 10px; border: none; border-bottom: 1px solid #555; background: transparent; color: white; font-size: 16px;">
       <button type="submit" style="align-self: flex-end; background: #007bff; color: white; padding: 10px 20px; border: none; border-radius: 999px; cursor: pointer; transition: background 0.3s ease;">заказать</button>
     </form>
 
@@ -438,7 +456,7 @@ async function submitMiniForm(event) {
   <p style="font-size: 14px; color: #aaa; margin-bottom: 20px;">Запишитесь на экскурсию просмотра участков под строительство. У нас сейчас 37 участков по 6-10 соток, найдем для вас что-то подходящее</p>
   <form onsubmit="submitExcursionForm(event)" style="max-width: 400px; margin: auto; display: flex; flex-direction: column; gap: 15px;">
     <input type="text" id="excursion-name" placeholder="Имя" required style="padding: 12px; border-radius: 8px; border: none; font-size: 16px;">
-    <input type="tel" id="excursion-phone" placeholder="Номер телефона" required style="padding: 12px; border-radius: 8px; border: none; font-size: 16px;">
+    <input type="tel" id="excursion-phone" value="+7 " placeholder="Номер телефона" inputmode="tel" autocomplete="tel" required style="padding: 12px; border-radius: 8px; border: none; font-size: 16px;">
     <button type="submit" style="background: #007bff; color: white; padding: 12px; font-size: 16px; border: none; border-radius: 8px; cursor: pointer;">Записаться</button>
     <div id="excursion-sending" style="display: none; color: #aaa; font-size: 14px;">⏳ Отправка...</div>
   </form>
