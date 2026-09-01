@@ -244,18 +244,41 @@
     }
   </style>
   <script>
-function clearFormOnSubmit(form) {
-  form.addEventListener('submit', function (e) {
-    e.preventDefault();
-    setTimeout(() => {
-      form.reset();
-    }, 100);
-  });
+const LUXURY_LEAD_ENDPOINT = 'https://almastroi-tg.malyginalex80.workers.dev/api/tg';
+
+function luxuryRequestId(prefix) {
+  if (window.crypto && typeof window.crypto.randomUUID === 'function') {
+    return prefix + ':' + window.crypto.randomUUID();
+  }
+  return prefix + ':' + Date.now() + ':' + Math.random().toString(36).slice(2);
 }
 
-window.addEventListener('DOMContentLoaded', () => {
-  document.querySelectorAll('form').forEach(form => clearFormOnSubmit(form));
-});
+async function sendLuxuryLead(formId, fields) {
+  const payload = Object.assign({
+    site: 'luxury_house',
+    source: 'luxury-house.site',
+    form_id: formId,
+    request_id: luxuryRequestId(formId),
+    page: window.location.href,
+    ref: document.referrer || ''
+  }, fields);
+
+  const response = await fetch(LUXURY_LEAD_ENDPOINT, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(payload),
+    keepalive: true
+  });
+
+  let result = {};
+  try { result = await response.json(); } catch (_) {}
+
+  if (!response.ok || result.ok === false) {
+    throw new Error('Lead endpoint returned an error');
+  }
+
+  return result;
+}
 </script>
 
 </head>
@@ -291,8 +314,8 @@ window.addEventListener('DOMContentLoaded', () => {
 
   <section>
     <h2>О нас</h2>
-    <p>Мы — строительная компания «Алмастрой» город Анапа.  
-    С 2000 года проектируем и строим частные дома под ключ: от фундамента до отделки.  
+    <p>Мы — строительная компания «Алмастрой» город Анапа.
+    С 2000 года проектируем и строим частные дома под ключ: от фундамента до отделки.
     Специализируемся на современных стилях — хай-тек и минимализм, работаем официально, по договору.</p>
   </section>
 
@@ -344,40 +367,49 @@ window.addEventListener('DOMContentLoaded', () => {
       <input id="mini-phone" type="tel" required style="padding: 10px; border: none; border-bottom: 1px solid #555; background: transparent; color: white; font-size: 16px;">
       <button type="submit" style="align-self: flex-end; background: #007bff; color: white; padding: 10px 20px; border: none; border-radius: 999px; cursor: pointer; transition: background 0.3s ease;">заказать</button>
     </form>
-   
+
 </section>
 
 <script>
-function submitMiniForm(event) {
+async function submitMiniForm(event) {
   event.preventDefault();
-  const phone = document.getElementById("mini-phone").value;
-  const sending = document.getElementById("sending");
-  const successMsg = document.getElementById("success-message");
-  sending.style.display = 'block';
+  const form = event.currentTarget;
+  const phoneInput = document.getElementById('mini-phone');
+  const phone = (phoneInput.value || '').trim();
+  const digits = phone.replace(/\D/g, '').replace(/^8/, '7');
+  const submit = form.querySelector('button[type="submit"]');
+  const sending = document.getElementById('sending');
+  const successMsg = document.getElementById('success-message');
 
-  fetch("https://api.telegram.org/bot7001009647:AAE9rV84I7zD81b3C2Zs4DBHwgpwZe2eW3k/sendMessage", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-      chat_id: 568878492,
-      text: `📥 Заказ строительства с сайта:\n📞 Телефон: ${phone}`
-    })
-  })
-  .then(response => response.json())
-  .then(data => {
-    sending.style.display = 'none';
-    if (data.ok) {
+  if (!/^7\d{10}$/.test(digits)) {
+    alert('Укажите телефон в формате +7 и 10 цифр');
+    phoneInput.focus();
+    return;
+  }
+  if (form.dataset.sending === '1') return;
+
+  form.dataset.sending = '1';
+  if (submit) submit.disabled = true;
+  if (sending) sending.style.display = 'block';
+
+  try {
+    await sendLuxuryLead('luxury_build_order', {
+      type: 'Заказ строительства',
+      phone: phone
+    });
+    form.reset();
+    if (successMsg) {
       successMsg.style.display = 'block';
       setTimeout(() => { successMsg.style.display = 'none'; }, 2500);
-    } else {
-      alert('Ошибка отправки в Telegram: ' + data.description);
     }
-  })
-  .catch(error => {
-    sending.style.display = 'none';
-    console.error('Ошибка:', error);
+  } catch (error) {
+    console.error(error);
     alert('Не удалось отправить заявку. Попробуйте позже.');
-  });
+  } finally {
+    form.dataset.sending = '0';
+    if (submit) submit.disabled = false;
+    if (sending) sending.style.display = 'none';
+  }
 }
 </script>
 
@@ -397,7 +429,7 @@ function submitMiniForm(event) {
       <p style="text-align: center; color: gray; margin-top: 8px;">ALMA-HOUSE 90 — цена 6,3 млн.руб.</p>
     </div>
   </div>
-</section> 
+</section>
 
 
   <!-- Экскурсия форма -->
@@ -437,34 +469,48 @@ function submitMiniForm(event) {
 </section>
 
 <script>
-function submitExcursionForm(e) {
-  e.preventDefault();
-  const name = document.getElementById("excursion-name").value;
-  const phone = document.getElementById("excursion-phone").value;
-  const sending = document.getElementById("excursion-sending");
-  sending.style.display = 'block';
+async function submitExcursionForm(event) {
+  event.preventDefault();
+  const form = event.currentTarget;
+  const nameInput = document.getElementById('excursion-name');
+  const phoneInput = document.getElementById('excursion-phone');
+  const name = (nameInput.value || '').trim();
+  const phone = (phoneInput.value || '').trim();
+  const digits = phone.replace(/\D/g, '').replace(/^8/, '7');
+  const submit = form.querySelector('button[type="submit"]');
+  const sending = document.getElementById('excursion-sending');
 
-  fetch("https://api.telegram.org/bot7001009647:AAE9rV84I7zD81b3C2Zs4DBHwgpwZe2eW3k/sendMessage", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-      chat_id: 568878492,
-      text: `📍 Заявка на ЭКСКУРСИЮ:
-👤 Имя: ${name}
-📞 Телефон: ${phone}`
-    })
-  })
-  .then(res => res.json())
-  .then(data => {
-    sending.style.display = 'none';
-    if (data.ok) alert("✅ Вы записаны на экскурсию!");
-    else alert("Ошибка: " + data.description);
-  })
-  .catch(err => {
-    sending.style.display = 'none';
-    alert("Ошибка отправки. Попробуйте позже.");
-    console.error(err);
-  });
+  if (!name) {
+    nameInput.focus();
+    return;
+  }
+  if (!/^7\d{10}$/.test(digits)) {
+    alert('Укажите телефон в формате +7 и 10 цифр');
+    phoneInput.focus();
+    return;
+  }
+  if (form.dataset.sending === '1') return;
+
+  form.dataset.sending = '1';
+  if (submit) submit.disabled = true;
+  if (sending) sending.style.display = 'block';
+
+  try {
+    await sendLuxuryLead('luxury_excursion', {
+      type: 'Экскурсия',
+      name: name,
+      phone: phone
+    });
+    form.reset();
+    alert('✅ Вы записаны на экскурсию!');
+  } catch (error) {
+    console.error(error);
+    alert('Ошибка отправки. Попробуйте позже.');
+  } finally {
+    form.dataset.sending = '0';
+    if (submit) submit.disabled = false;
+    if (sending) sending.style.display = 'none';
+  }
 }
 </script>
 
@@ -502,20 +548,6 @@ function submitExcursionForm(e) {
   <footer>
     © ООО «Алмастрой» 2000–2026
   </footer>
-<!-- Всплывающая форма -->
-<div id="popup" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); justify-content: center; align-items: center; z-index: 9999; animation: fadeIn 0.3s ease-in-out;">
-  <form id="form" style="background: #fff; padding: 30px; border-radius: 16px; box-shadow: 0 15px 30px rgba(0,0,0,0.3); display: flex; flex-direction: column; gap: 16px; width: 90%; max-width: 400px; font-family: Montserrat, sans-serif; position: relative; animation: slideUp 0.4s ease-out;">
-    <button type="button" class="close-btn" onclick="document.getElementById('popup').style.display='none'" style="position: absolute; top: 10px; right: 10px; background: transparent; border: none; font-size: 24px; cursor: pointer; color: #333;">&times;</button>
-    <h2 style="margin: 0; text-align: center; color: #000; text-shadow: 1px 1px 2px rgba(0,0,0,0.3); font-size: 22px;">Оставьте заявку</h2>
-    <input type="text" id="name" name="name" placeholder="Ваше имя" required style="padding: 12px; border: 1px solid #ccc; border-radius: 8px; font-size: 16px; text-shadow: 1px 1px 1px rgba(0,0,0,0.05);">
-    <input type="tel" id="phone" name="phone" placeholder="Телефон" required style="padding: 12px; border: 1px solid #ccc; border-radius: 8px; font-size: 16px; text-shadow: 1px 1px 1px rgba(0,0,0,0.05);">
-    <button type="submit" class="animated-button">Отправить и скачать смету</button>
-    <div id="sending" style="display:none; text-align:center; font-size:14px; color:#888;">⏳ Отправка...</div>
-  </form>
-</div>
-
-<div id="success-message" style="display:none; position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%); background: #4BB543; color: white; padding: 15px 25px; border-radius: 8px; font-family: Montserrat, sans-serif; font-size: 16px; box-shadow: 0 4px 12px rgba(0,0,0,0.2); z-index: 10000;">✅ Заявка успешно отправлена!</div>
-
 <style>
   @keyframes fadeIn {
     from { opacity: 0; }
@@ -558,57 +590,71 @@ function submitExcursionForm(e) {
 </style>
 
 <script>
-  document.addEventListener("DOMContentLoaded", function() {
-    const smetaLink = document.querySelector('.pdf a');
-    if (smetaLink) {
-      smetaLink.addEventListener('click', function(e) {
-        e.preventDefault();
-        document.getElementById('popup').style.display = 'flex';
-      });
-    }
+document.addEventListener('DOMContentLoaded', function() {
+  const smetaLink = document.querySelector('.pdf a');
+  const form = document.getElementById('form');
 
-    document.getElementById("form").addEventListener("submit", function(e) {
-      e.preventDefault();
-      const name = document.getElementById("name").value;
-      const phone = document.getElementById("phone").value;
-      const sending = document.getElementById("sending");
-      const successMsg = document.getElementById("success-message");
-      sending.style.display = 'block';
-
-      fetch("https://api.telegram.org/bot7001009647:AAE9rV84I7zD81b3C2Zs4DBHwgpwZe2eW3k/sendMessage", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          chat_id: 568878492,
-          text: `📥 Заявка скачали проект c сайта:\n👤 Имя: ${name}\n📞 Телефон: ${phone}`
-        })
-      })
-      .then(response => response.json())
-      .then(data => {
-        sending.style.display = 'none';
-        if (data.ok) {
-          document.getElementById("popup").style.display = 'none';
-          successMsg.style.display = 'block';
-          setTimeout(() => {
-            successMsg.style.display = 'none';
-            window.location.href = "https://disk.yandex.ru/d/fPbIteaLAddVlw";
-          }, 2000);
-        } else {
-          alert('Ошибка отправки в Telegram: ' + data.description);
-        }
-      })
-      .catch(error => {
-        sending.style.display = 'none';
-        console.error('Ошибка:', error);
-        alert('Не удалось отправить заявку. Попробуйте позже.');
-      });
+  if (smetaLink) {
+    smetaLink.addEventListener('click', function(event) {
+      event.preventDefault();
+      document.getElementById('popup').style.display = 'flex';
     });
+  }
+
+  if (!form) return;
+
+  form.addEventListener('submit', async function(event) {
+    event.preventDefault();
+    const nameInput = document.getElementById('name');
+    const phoneInput = document.getElementById('phone');
+    const name = (nameInput.value || '').trim();
+    const phone = (phoneInput.value || '').trim();
+    const digits = phone.replace(/\D/g, '').replace(/^8/, '7');
+    const submit = form.querySelector('button[type="submit"]');
+    const sending = document.getElementById('sending');
+    const successMsg = document.getElementById('success-message');
+
+    if (!name) {
+      nameInput.focus();
+      return;
+    }
+    if (!/^7\d{10}$/.test(digits)) {
+      alert('Укажите телефон в формате +7 и 10 цифр');
+      phoneInput.focus();
+      return;
+    }
+    if (form.dataset.sending === '1') return;
+
+    form.dataset.sending = '1';
+    if (submit) submit.disabled = true;
+    if (sending) sending.style.display = 'block';
+
+    try {
+      await sendLuxuryLead('luxury_project_download', {
+        type: 'Скачивание проекта ALMA-HOUSE 200',
+        name: name,
+        phone: phone
+      });
+      document.getElementById('popup').style.display = 'none';
+      form.reset();
+      if (successMsg) successMsg.style.display = 'block';
+      setTimeout(function() {
+        if (successMsg) successMsg.style.display = 'none';
+        window.location.href = 'https://disk.yandex.ru/d/fPbIteaLAddVlw';
+      }, 2000);
+    } catch (error) {
+      console.error(error);
+      alert('Не удалось отправить заявку. Попробуйте позже.');
+    } finally {
+      form.dataset.sending = '0';
+      if (submit) submit.disabled = false;
+      if (sending) sending.style.display = 'none';
+    }
   });
+});
 </script>
 
 
 
 </body>
 </html>
-
-
