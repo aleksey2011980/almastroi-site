@@ -246,24 +246,13 @@
   <script>
 const LUXURY_LEAD_BACKEND = 'https://app.nexsta.site/api/public';
 const luxurySubmissions = new Map();
-const LUXURY_PROJECT_SHARE = 'https://disk.yandex.ru/d/fPbIteaLAddVlw';
-
-async function startLuxuryProjectDownload() {
-  let destination = LUXURY_PROJECT_SHARE;
-  try {
-    const url = new URL('https://cloud-api.yandex.net/v1/disk/public/resources/download');
-    url.searchParams.set('public_key', LUXURY_PROJECT_SHARE);
-    const response = await fetch(url, { credentials: 'omit', signal: AbortSignal.timeout(8000) });
-    if (response.ok) {
-      const { href } = await response.json();
-      const temporary = new URL(href);
-      if (temporary.protocol === 'https:' && temporary.hostname === 'downloader.disk.yandex.ru'
-          && !temporary.username && !temporary.password) destination = temporary.href;
-    }
-  } catch (_) {
-    // The public share page remains available if Yandex's direct link API is unavailable.
-  }
-  window.location.assign(destination);
+function startLuxuryProjectDownload(receipt) {
+  if (typeof receipt !== 'string' || !/^\d{13}\.[a-f0-9]{36}\.[a-f0-9]{64}$/.test(receipt)) return false;
+  const retry = document.getElementById('luxury-project-download-retry');
+  retry.href = LUXURY_LEAD_BACKEND + '/luxury-project.zip?receipt=' + encodeURIComponent(receipt);
+  retry.hidden = false;
+  retry.click();
+  return true;
 }
 
 async function sendLuxuryLead(formId, fields) {
@@ -558,7 +547,8 @@ async function submitExcursionForm(event) {
     <h2>Строительство Hi-tech дома ALMA-HOUSE 200 по цене  квартиры</h2>
     <p>Компания «Алмастрой» предлагает построить  дом в городе Анапа и Анапском районе. Современные технологии, энергосбережение и дизайн будущего — уже сегодня. Возможно строительство по вашему проекту.</p>
     <div class="pdf">
-      📥 <a href="https://disk.yandex.ru/d/fPbIteaLAddVlw" target="_blank">Скачать смету, проект  ALMA-HOUSE 200 (zip, 74 МБ)</a>
+      📥 <a href="#popup">Скачать смету, проект  ALMA-HOUSE 200 (zip, 74 МБ)</a>
+      <a id="luxury-project-download-retry" hidden referrerpolicy="no-referrer">Скачать ZIP повторно</a>
     </div>
   </section>
 
@@ -673,7 +663,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     try {
       const download = projectDownload;
-      await sendLuxuryLead(download ? 'luxury_project_download' : 'luxury_callback', {
+      const result = await sendLuxuryLead(download ? 'luxury_project_download' : 'luxury_callback', {
         name: name,
         phone: '+' + digits,
         message: document.getElementById('project-message').value.trim()
@@ -683,8 +673,10 @@ document.addEventListener('DOMContentLoaded', function() {
       if (successMsg) successMsg.style.display = 'block';
       setTimeout(function() {
         if (successMsg) successMsg.style.display = 'none';
-        if (download) void startLuxuryProjectDownload();
       }, 2000);
+      if (download && !startLuxuryProjectDownload(result.download_receipt)) {
+        alert('Заявка сохранена, но ссылка на скачивание пока недоступна. Повторите попытку.');
+      }
     } catch (error) {
       console.error(error);
       alert('Не удалось отправить заявку. Попробуйте позже.');
