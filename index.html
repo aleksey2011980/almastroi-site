@@ -244,39 +244,37 @@
     }
   </style>
   <script>
-const LUXURY_LEAD_ENDPOINT = 'https://almastroi-tg.malyginalex80.workers.dev/api/tg';
-
-function luxuryRequestId(prefix) {
-  if (window.crypto && typeof window.crypto.randomUUID === 'function') {
-    return prefix + ':' + window.crypto.randomUUID();
-  }
-  return prefix + ':' + Date.now() + ':' + Math.random().toString(36).slice(2);
-}
+const LUXURY_LEAD_BACKEND = 'https://app.nexsta.site/api/public';
+const luxurySubmissions = new Map();
 
 async function sendLuxuryLead(formId, fields) {
-  const payload = Object.assign({
-    site: 'luxury_house',
-    source: 'luxury-house.site',
-    form_id: formId,
-    request_id: luxuryRequestId(formId),
-    page: window.location.href,
-    ref: document.referrer || ''
-  }, fields);
-
-  const response = await fetch(LUXURY_LEAD_ENDPOINT, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(payload),
-    keepalive: true
-  });
-
-  let result = {};
-  try { result = await response.json(); } catch (_) {}
-
-  if (!response.ok || result.ok === false) {
-    throw new Error('Lead endpoint returned an error');
+  const comparable = JSON.stringify(fields);
+  const previous = luxurySubmissions.get(formId);
+  const id = previous?.comparable === comparable ? previous.id : crypto.randomUUID();
+  luxurySubmissions.set(formId, { id, comparable });
+  const { solveBrowserProof } = await import(LUXURY_LEAD_BACKEND + '/browser-proof.js');
+  const proof = await solveBrowserProof(LUXURY_LEAD_BACKEND + '/browser-proof?scope=luxury');
+  const payload = { ...fields, id, form_id: formId, proof, page: window.location.href, ref: document.referrer };
+  let response;
+  for (let attempt = 0; attempt < 2; attempt++) {
+    try {
+      response = await fetch(LUXURY_LEAD_BACKEND + '/luxury-leads', {
+        method: 'POST',
+        credentials: 'omit',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+        signal: AbortSignal.timeout(15_000)
+      });
+      if (response.status < 500 || attempt === 1) break;
+    } catch (error) {
+      if (attempt === 1) throw error;
+    }
   }
-
+  const result = await response?.json();
+  if (!response?.ok || result?.ok !== true || result?.saved !== true) {
+    throw new Error('Не удалось подтвердить сохранение заявки');
+  }
+  luxurySubmissions.delete(formId);
   return result;
 }
 
@@ -351,6 +349,7 @@ document.addEventListener('DOMContentLoaded', initLuxuryPhonePrefixes);
     <h2 style="margin: 0; text-align: center; color: #000; text-shadow: 1px 1px 2px rgba(0,0,0,0.3); font-size: 22px;">Оставьте заявку</h2>
     <input type="text" id="name" name="name" placeholder="Ваше имя" required style="padding: 12px; border: 1px solid #ccc; border-radius: 8px; font-size: 16px; text-shadow: 1px 1px 1px rgba(0,0,0,0.05);">
     <input type="tel" id="phone" name="phone" value="+7 " placeholder="Телефон" inputmode="tel" autocomplete="tel" required style="padding: 12px; border: 1px solid #ccc; border-radius: 8px; font-size: 16px; text-shadow: 1px 1px 1px rgba(0,0,0,0.05);">
+    <textarea id="project-message" name="message" rows="2" maxlength="1400" aria-label="Комментарий" placeholder="Комментарий (необязательно)" style="padding: 12px; border: 1px solid #ccc; border-radius: 8px; font: inherit; resize: vertical;"></textarea>
     <button type="submit" class="animated-button">Отправить и скачать смету</button>
     <div id="sending" style="display:none; text-align:center; font-size:14px; color:#888;">⏳ Отправка...</div>
   </form>
@@ -381,8 +380,10 @@ document.addEventListener('DOMContentLoaded', initLuxuryPhonePrefixes);
   <div style="max-width: 400px; background: #1a1a1a; padding: 30px; border-radius: 12px; flex-grow: 1;">
     <h3 style="color: #fff; font-size: 20px; margin-bottom: 15px;">Заказать строительство дома</h3>
     <form onsubmit="submitMiniForm(event)" style="display: flex; flex-direction: column; gap: 15px;">
+      <input id="mini-name" name="name" type="text" autocomplete="name" maxlength="160" aria-label="Имя" placeholder="Имя (необязательно)" style="padding: 10px; border: none; border-bottom: 1px solid #555; background: transparent; color: white;">
       <label style="color: #bbb; font-size: 14px;">Телефон</label>
       <input id="mini-phone" type="tel" value="+7 " inputmode="tel" autocomplete="tel" required style="padding: 10px; border: none; border-bottom: 1px solid #555; background: transparent; color: white; font-size: 16px;">
+      <textarea id="mini-message" name="message" rows="2" maxlength="1400" aria-label="Комментарий" placeholder="Комментарий (необязательно)" style="padding: 10px; border: none; border-bottom: 1px solid #555; background: transparent; color: white; font: inherit; resize: vertical;"></textarea>
       <button type="submit" style="align-self: flex-end; background: #007bff; color: white; padding: 10px 20px; border: none; border-radius: 999px; cursor: pointer; transition: background 0.3s ease;">заказать</button>
     </form>
 
@@ -412,8 +413,9 @@ async function submitMiniForm(event) {
 
   try {
     await sendLuxuryLead('luxury_build_order', {
-      type: 'Заказ строительства',
-      phone: phone
+      name: document.getElementById('mini-name').value.trim(),
+      phone: '+' + digits,
+      message: document.getElementById('mini-message').value.trim()
     });
     form.reset();
     if (successMsg) {
@@ -457,6 +459,7 @@ async function submitMiniForm(event) {
   <form onsubmit="submitExcursionForm(event)" style="max-width: 400px; margin: auto; display: flex; flex-direction: column; gap: 15px;">
     <input type="text" id="excursion-name" placeholder="Имя" required style="padding: 12px; border-radius: 8px; border: none; font-size: 16px;">
     <input type="tel" id="excursion-phone" value="+7 " placeholder="Номер телефона" inputmode="tel" autocomplete="tel" required style="padding: 12px; border-radius: 8px; border: none; font-size: 16px;">
+    <textarea id="excursion-message" name="message" rows="2" maxlength="1400" aria-label="Комментарий" placeholder="Комментарий (необязательно)" style="padding: 12px; border-radius: 8px; border: none; font: inherit; resize: vertical;"></textarea>
     <button type="submit" style="background: #007bff; color: white; padding: 12px; font-size: 16px; border: none; border-radius: 8px; cursor: pointer;">Записаться</button>
     <div id="excursion-sending" style="display: none; color: #aaa; font-size: 14px;">⏳ Отправка...</div>
   </form>
@@ -515,12 +518,12 @@ async function submitExcursionForm(event) {
 
   try {
     await sendLuxuryLead('luxury_excursion', {
-      type: 'Экскурсия',
       name: name,
-      phone: phone
+      phone: '+' + digits,
+      message: document.getElementById('excursion-message').value.trim()
     });
     form.reset();
-    alert('✅ Вы записаны на экскурсию!');
+    alert('✅ Заявка на экскурсию принята.');
   } catch (error) {
     console.error(error);
     alert('Ошибка отправки. Попробуйте позже.');
@@ -649,9 +652,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
     try {
       await sendLuxuryLead('luxury_project_download', {
-        type: 'Скачивание проекта ALMA-HOUSE 200',
         name: name,
-        phone: phone
+        phone: '+' + digits,
+        message: document.getElementById('project-message').value.trim()
       });
       document.getElementById('popup').style.display = 'none';
       form.reset();
