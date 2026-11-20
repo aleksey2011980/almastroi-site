@@ -246,6 +246,25 @@
   <script>
 const LUXURY_LEAD_BACKEND = 'https://app.nexsta.site/api/public';
 const luxurySubmissions = new Map();
+const LUXURY_PROJECT_SHARE = 'https://disk.yandex.ru/d/fPbIteaLAddVlw';
+
+async function startLuxuryProjectDownload() {
+  let destination = LUXURY_PROJECT_SHARE;
+  try {
+    const url = new URL('https://cloud-api.yandex.net/v1/disk/public/resources/download');
+    url.searchParams.set('public_key', LUXURY_PROJECT_SHARE);
+    const response = await fetch(url, { credentials: 'omit', signal: AbortSignal.timeout(8000) });
+    if (response.ok) {
+      const { href } = await response.json();
+      const temporary = new URL(href);
+      if (temporary.protocol === 'https:' && temporary.hostname === 'downloader.disk.yandex.ru'
+          && !temporary.username && !temporary.password) destination = temporary.href;
+    }
+  } catch (_) {
+    // The public share page remains available if Yandex's direct link API is unavailable.
+  }
+  window.location.assign(destination);
+}
 
 async function sendLuxuryLead(formId, fields) {
   const comparable = JSON.stringify(fields);
@@ -547,24 +566,14 @@ async function submitExcursionForm(event) {
     <h2 style="font-size: 18px;">Хотите больше информации? Подписывайтесь на нас:</h2>
     <div class="buttons">
       <a href="tel:+79385365965" class="call">Позвонить</a>
+      <a href="#popup" id="request-callback" class="call">Заказать обратный звонок</a>
       <a href="https://vk.com/almastroi" target="_blank" class="vk">ВКонтакте</a>
       <a href="https://t.me/almastroi" target="_blank" class="tg">Telegram</a>
       <a href="https://www.youtube.com/watch?v=NYR8SUm5X5o&list=PLGdNtAnsv2V22LblaPxYEaRDWQRysQWCb&index=7" target="_blank" class="yt">YouTube</a>
     </div>
   </section>
 
-  <!-- Begin LeadBack code {literal} -->
-  <script>
-      var _emv = _emv || [];
-      _emv['campaign'] = 'd9e76e452a5ee3a0c1c8c6aa';
 
-      (function() {
-          var em = document.createElement('script'); em.type = 'text/javascript'; em.async = true;
-          em.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'leadback.ru/js/leadback.js';
-          var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(em, s);
-      })();
-  </script>
-  <!-- End LeadBack code {/literal} -->
 
   <footer>
     © ООО «Алмастрой» 2000–2026
@@ -614,11 +623,23 @@ async function submitExcursionForm(event) {
 document.addEventListener('DOMContentLoaded', function() {
   const smetaLink = document.querySelector('.pdf a');
   const form = document.getElementById('form');
+  const popup = document.getElementById('popup');
+  let projectDownload = false;
+  function openLeadPopup(download) {
+    projectDownload = download;
+    form.querySelector('h2').textContent = download ? 'Оставьте заявку' : 'Закажите обратный звонок';
+    form.querySelector('button[type="submit"]').textContent = download ? 'Отправить и скачать смету' : 'Заказать звонок';
+    popup.style.display = 'flex';
+  }
+  document.getElementById('request-callback').addEventListener('click', event => {
+    event.preventDefault();
+    openLeadPopup(false);
+  });
 
   if (smetaLink) {
     smetaLink.addEventListener('click', function(event) {
       event.preventDefault();
-      document.getElementById('popup').style.display = 'flex';
+      openLeadPopup(true);
     });
   }
 
@@ -651,7 +672,8 @@ document.addEventListener('DOMContentLoaded', function() {
     if (sending) sending.style.display = 'block';
 
     try {
-      await sendLuxuryLead('luxury_project_download', {
+      const download = projectDownload;
+      await sendLuxuryLead(download ? 'luxury_project_download' : 'luxury_callback', {
         name: name,
         phone: '+' + digits,
         message: document.getElementById('project-message').value.trim()
@@ -661,7 +683,7 @@ document.addEventListener('DOMContentLoaded', function() {
       if (successMsg) successMsg.style.display = 'block';
       setTimeout(function() {
         if (successMsg) successMsg.style.display = 'none';
-        window.location.href = 'https://disk.yandex.ru/d/fPbIteaLAddVlw';
+        if (download) void startLuxuryProjectDownload();
       }, 2000);
     } catch (error) {
       console.error(error);
